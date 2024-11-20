@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,7 +35,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		28000DF72CCFC5B000F938DC /* Exceptions for "UsefulAppStark" folder in "UsefulAppStark" target */ = {
+		28000DF72CCFC5B000F938DC /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -45,24 +45,9 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		28000DCE2CCFC5AE00F938DC /* UsefulAppStark */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				28000DF72CCFC5B000F938DC /* Exceptions for "UsefulAppStark" folder in "UsefulAppStark" target */,
-			);
-			path = UsefulAppStark;
-			sourceTree = "<group>";
-		};
-		28000DE82CCFC5B000F938DC /* UsefulAppStarkTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = UsefulAppStarkTests;
-			sourceTree = "<group>";
-		};
-		28000DF22CCFC5B000F938DC /* UsefulAppStarkUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = UsefulAppStarkUITests;
-			sourceTree = "<group>";
-		};
+		28000DCE2CCFC5AE00F938DC /* UsefulAppStark */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (28000DF72CCFC5B000F938DC /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = UsefulAppStark; sourceTree = "<group>"; };
+		28000DE82CCFC5B000F938DC /* UsefulAppStarkTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UsefulAppStarkTests; sourceTree = "<group>"; };
+		28000DF22CCFC5B000F938DC /* UsefulAppStarkUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UsefulAppStarkUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +191,7 @@
 				};
 			};
 			buildConfigurationList = 28000DC72CCFC5AE00F938DC /* Build configuration list for PBXProject "UsefulAppStark" */;
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -214,7 +200,6 @@
 			);
 			mainGroup = 28000DC32CCFC5AE00F938DC;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 28000DCD2CCFC5AE00F938DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
