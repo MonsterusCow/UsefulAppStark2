@@ -26,9 +26,9 @@ class ActualStudyViewController: UIViewController {
         wordPart.text = "\(Info.flashCardArray[number].word)"
         tablabel.badgeColor = .red
         if Info.flashCardArray[number].stared{
-            starImage.image = UIImage(named: "star.fill")
+            starImage.image = UIImage(systemName: "star.fill")
         } else {
-            starImage.image = UIImage(named: "star")
+        starImage.image = UIImage(systemName: "star")
         }
     }
     
@@ -44,9 +44,9 @@ class ActualStudyViewController: UIViewController {
         noteCardImage.image = UIImage(named: "notecard")
         wordPart.text = "\(Info.flashCardArray[number].word)"
         if Info.flashCardArray[number].stared{
-            starImage.image = UIImage(named: "star.fill")
+            starImage.image = UIImage(systemName: "star.fill")
         } else {
-            starImage.image = UIImage(named: "star")
+        starImage.image = UIImage(systemName: "star")
         }
     }
     @IBAction func forwardButton(_ sender: Any) {
@@ -58,9 +58,9 @@ class ActualStudyViewController: UIViewController {
         noteCardImage.image = UIImage(named: "notecard")
         wordPart.text = "\(Info.flashCardArray[number].word)"
         if Info.flashCardArray[number].stared{
-            starImage.image = UIImage(named: "star.fill")
+            starImage.image = UIImage(systemName: "star.fill")
         } else {
-            starImage.image = UIImage(named: "star")
+        starImage.image = UIImage(systemName: "star")
         }
     }
     @IBAction func flipButton(_ sender: Any) {
@@ -76,11 +76,11 @@ class ActualStudyViewController: UIViewController {
     }
 
     @IBAction func starButton(_ sender: Any) {
-        if starImage.image == UIImage(named: "star.fill"){
-            starImage.image = UIImage(named: "star")
+        if starImage.image == UIImage(systemName: "star.fill"){
+            starImage.image = UIImage(systemName: "star")
             Info.flashCardArray[number].stared = false
         } else {
-            starImage.image = UIImage(named: "star.fill")
+            starImage.image = UIImage(systemName: "star.fill")
             Info.flashCardArray[number].stared = true
         }
     }
