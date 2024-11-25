@@ -39,9 +39,9 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        randomArray = Info.flashCardArray.shuffled()
         randomize()
         self.navigationItem.setHidesBackButton(true, animated: true)
-
     }
     override func viewWillAppear(_ animated: Bool) {
         if Settings.resett {
@@ -173,6 +173,7 @@ class QuizViewController: UIViewController {
     
     func randomize(){
         if ((Point.correct+Point.wrong) % Info.flashCardArray.count) == 0 {
+            print(Point.number)
             let store = randomArray[Point.number].word
             increase()
             randomArray = Info.flashCardArray.shuffled()

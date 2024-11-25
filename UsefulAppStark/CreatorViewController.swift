@@ -33,7 +33,7 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
          } else if defTextView.text.replacingOccurrences(of: " ", with: "") == "" {
              nuhUH(alertText: "There is no definition yet")
          } else {
-             Info.flashCardArray.append(Flashcard(word: wordTextView.text, def: defTextView.text))
+             Info.flashCardArray.append(Flashcard(word: wordTextView.text, def: defTextView.text, stared: false))
           }
          createAgain()
      }

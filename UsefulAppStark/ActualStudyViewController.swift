@@ -13,12 +13,11 @@ class ActualStudyViewController: UIViewController {
     
     @IBOutlet weak var noteCardImage: UIImageView!
     @IBOutlet weak var wordPart: UILabel!
+    @IBOutlet weak var starImage: UIImageView!
     var number = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
-
-
         // Do any additional setup after loading the view.
     }
     
@@ -26,6 +25,11 @@ class ActualStudyViewController: UIViewController {
         noteCardImage.image = UIImage(named: "notecard")
         wordPart.text = "\(Info.flashCardArray[number].word)"
         tablabel.badgeColor = .red
+        if Info.flashCardArray[number].stared{
+            starImage.image = UIImage(named: "star.fill")
+        } else {
+            starImage.image = UIImage(named: "star")
+        }
     }
     
     @IBAction func finishButton(_ sender: Any) {
@@ -39,6 +43,11 @@ class ActualStudyViewController: UIViewController {
         }
         noteCardImage.image = UIImage(named: "notecard")
         wordPart.text = "\(Info.flashCardArray[number].word)"
+        if Info.flashCardArray[number].stared{
+            starImage.image = UIImage(named: "star.fill")
+        } else {
+            starImage.image = UIImage(named: "star")
+        }
     }
     @IBAction func forwardButton(_ sender: Any) {
         if number == Info.flashCardArray.count-1 {
@@ -48,15 +57,31 @@ class ActualStudyViewController: UIViewController {
         }
         noteCardImage.image = UIImage(named: "notecard")
         wordPart.text = "\(Info.flashCardArray[number].word)"
+        if Info.flashCardArray[number].stared{
+            starImage.image = UIImage(named: "star.fill")
+        } else {
+            starImage.image = UIImage(named: "star")
+        }
     }
     @IBAction func flipButton(_ sender: Any) {
         if noteCardImage.image == UIImage(named: "notecard"){
             noteCardImage.image = UIImage(named: "blank")
             wordPart.text = Info.flashCardArray[number].def
+            
         } else {
             noteCardImage.image = UIImage(named: "notecard")
             wordPart.text = "\(Info.flashCardArray[number].word)"
 
+        }
+    }
+
+    @IBAction func starButton(_ sender: Any) {
+        if starImage.image == UIImage(named: "star.fill"){
+            starImage.image = UIImage(named: "star")
+            Info.flashCardArray[number].stared = false
+        } else {
+            starImage.image = UIImage(named: "star.fill")
+            Info.flashCardArray[number].stared = true
         }
     }
     
