@@ -9,6 +9,8 @@ import UIKit
 
 class ActualStudyViewController: UIViewController {
 
+    @IBOutlet weak var tablabel: UITabBarItem!
+    
     @IBOutlet weak var noteCardImage: UIImageView!
     @IBOutlet weak var wordPart: UILabel!
     var number = 0
@@ -23,6 +25,7 @@ class ActualStudyViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         noteCardImage.image = UIImage(named: "notecard")
         wordPart.text = "\(Info.flashCardArray[number].word)"
+        tablabel.badgeColor = .red
     }
     
     @IBAction func finishButton(_ sender: Any) {
