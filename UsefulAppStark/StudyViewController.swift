@@ -12,19 +12,24 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableViewThing: UITableView!
     @IBOutlet weak var switchThing: UISwitch!
     
+    var indexs = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewThing.delegate = self
         tableViewThing.dataSource = self
         self.navigationItem.setHidesBackButton(true, animated: true)
-        tableViewThing.reloadData()
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getStared()
+        tableViewThing.reloadData()
+    }
     
     @IBAction func switchAction(_ sender: Any) {
-        print(switchThing.isOn)
+        getStared()
+        tableViewThing.reloadData()
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -32,7 +37,6 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func howManyStared() -> Int{
-        var indexs = [Int]()
         for i in 0..<Info.flashCardArray.count {
             if Info.flashCardArray[i].stared{
                 indexs.append(i)
@@ -41,14 +45,13 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return indexs.count
     }
     
-    func getStared() -> Array<Int>{
-        var indexs = [Int]()
+    func getStared(){
+        indexs = []
         for i in 0..<Info.flashCardArray.count {
             if Info.flashCardArray[i].stared{
                 indexs.append(i)
             }
         }
-        return indexs
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,13 +69,16 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if switchThing.isOn{
+        if switchThing.isOn{
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
             cell.configure(word: Info.flashCardArray[indexPath.row].word, def: Info.flashCardArray[indexPath.row].def)
             return cell
-//        } else {
-//            
-//        }
+        } else {
+            getStared()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
+            cell.configure(word: Info.flashCardArray[indexs[indexPath.row]].word, def: Info.flashCardArray[indexs[indexPath.row]].def)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
