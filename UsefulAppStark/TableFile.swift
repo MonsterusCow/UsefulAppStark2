@@ -13,14 +13,26 @@ class CellStuff: UITableViewCell{
     
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var defLabel: UILabel!
+    @IBOutlet weak var starImage: UIImageView!
+    var index = 0
     
-    func configure(word: String, def: String){
+    func configure(word: String, def: String, image: String, num: Int){
         wordLabel.text = word
         defLabel.text = "definition: \(def)"
-        
-        
+        starImage.image = UIImage(systemName: image)
+        index = num
     }
     
+    @IBAction func star(_ sender: Any) {
+        if starImage.image == UIImage(systemName: "star"){
+            starImage.image = UIImage(systemName: "star.fill")
+            Info.flashCardArray[index].stared = true
+        } else {
+            starImage.image = UIImage(systemName: "star")
+            Info.flashCardArray[index].stared = false
+        }
+        
+    }
     
     
 }

@@ -19,7 +19,6 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableViewThing.delegate = self
         tableViewThing.dataSource = self
         self.navigationItem.setHidesBackButton(true, animated: true)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,10 +31,13 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableViewThing.reloadData()
     }
     
-    @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+    @IBAction func starButton(_ sender: Any) {
+//        _ = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: false) { timer in
+//            self.getStared()
+//            self.tableViewThing.reloadData()
+//        }
     }
-    
+
     func howManyStared() -> Int{
         for i in 0..<Info.flashCardArray.count {
             if Info.flashCardArray[i].stared{
@@ -71,12 +73,18 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if switchThing.isOn{
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
-            cell.configure(word: Info.flashCardArray[indexPath.row].word, def: Info.flashCardArray[indexPath.row].def)
+            var string = ""
+            if Info.flashCardArray[indexPath.row].stared{
+                string = "star.fill"
+            } else {
+                string = "star"
+            }
+            cell.configure(word: Info.flashCardArray[indexPath.row].word, def: Info.flashCardArray[indexPath.row].def, image: string, num: indexPath.row)
             return cell
         } else {
             getStared()
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
-            cell.configure(word: Info.flashCardArray[indexs[indexPath.row]].word, def: Info.flashCardArray[indexs[indexPath.row]].def)
+            cell.configure(word: Info.flashCardArray[indexs[indexPath.row]].word, def: Info.flashCardArray[indexs[indexPath.row]].def, image: "star.fill", num: indexPath.row)
             return cell
         }
     }

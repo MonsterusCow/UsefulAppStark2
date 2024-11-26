@@ -33,14 +33,14 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         //enable for one run to clear saved cards
 //        defaults.set(nil, forKey: "cards")
-//        self.navigationItem.setHidesBackButton(true, animated: true)
-//        if let cardstuff = defaults.data(forKey: "cards"){
-//            if let decoded = try? decoder.decode([Flashcard].self, from: cardstuff){
-//                Info.flashCardArray = decoded
-//            }
-//        }
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        if let cardstuff = defaults.data(forKey: "cards"){
+            if let decoded = try? decoder.decode([Flashcard].self, from: cardstuff){
+                Info.flashCardArray = decoded
+            }
+        }
         //disable for auto flashcards to be removed:
-        Info.flashCardArray = [Flashcard(word: "Word 1", def: "Definition 1", stared: true), Flashcard(word: "Word 2", def: "Definition 2", stared: false), Flashcard(word: "Word 3", def: "Definition 3", stared: true), Flashcard(word: "Word 4", def: "Definition 4", stared: false), Flashcard(word: "Word 5", def: "Definition 5", stared: false), Flashcard(word: "Word 6", def: "Definition 6", stared: false)]
+//        Info.flashCardArray = [Flashcard(word: "Word 1", def: "Definition 1", stared: true), Flashcard(word: "Word 2", def: "Definition 2", stared: false), Flashcard(word: "Word 3", def: "Definition 3", stared: true), Flashcard(word: "Word 4", def: "Definition 4", stared: false), Flashcard(word: "Word 5", def: "Definition 5", stared: false), Flashcard(word: "Word 6", def: "Definition 6", stared: false)]
     }
     
 
