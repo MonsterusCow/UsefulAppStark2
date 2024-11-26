@@ -4,7 +4,7 @@
 //
 //  Created by RYAN STARK on 11/22/24.
 //
-class Flashcard: Codable{
+class Flashcard: Codable {
 
     var word: String
     var def: String
@@ -17,7 +17,7 @@ class Flashcard: Codable{
     }
 }
 
-class Info{
+class Info {
     static var flashCardArray = [Flashcard]()
 }
 

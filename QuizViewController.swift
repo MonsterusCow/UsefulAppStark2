@@ -15,8 +15,8 @@ class Settings {
 }
 
 class Point {
-    static var correct = 0
-    static var wrong = 0
+    static var correct = [Flashcard]()
+    static var wrong = [Flashcard]()
     static var number = 0
 }
 
@@ -52,36 +52,25 @@ class QuizViewController: UIViewController {
         } else {
             wordPart.text = "\(randomArray[Point.number].def)"
         }
-        if correctRand == 1 {
-            if Settings.wordd {option1.text = randomArray[Point.number].def}
-            else {option1.text = randomArray[Point.number].word}
-        } else {
-            if Settings.wordd {option1.text = randomArray[rand1].def}
-            else {option1.text = randomArray[rand1].word}
+        
+        let options = [option1, option2, option3, option4]
+        
+        for i in 0 ..< options.count {
+            if correctRand == i + 1
+            {
+                if Settings.wordd
+                {
+                    options[i]!.text = randomArray[Point.number].def
+                } else {
+                    options[i]!.text = randomArray[Point.number].word
+                }
+            }
         }
-        if correctRand == 2 {
-            if Settings.wordd {option2.text = randomArray[Point.number].def}
-            else {option2.text = randomArray[Point.number].word}
-        } else {
-            if Settings.wordd {option2.text = randomArray[rand2].def}
-            else {option2.text = randomArray[rand2].word}
-        }
-        if correctRand == 3 {
-            if Settings.wordd {option3.text = randomArray[Point.number].def}
-            else {option3.text = randomArray[Point.number].word}
-        } else {
-            if Settings.wordd {option3.text = randomArray[rand3].def}
-            else {option3.text = randomArray[rand3].word}
-        }
-        if correctRand == 4 {
-            if Settings.wordd {option4.text = randomArray[Point.number].def}
-            else {option4.text = randomArray[Point.number].word}
-        } else {
-            if Settings.wordd {option4.text = randomArray[rand4].def}
-            else {option4.text = randomArray[rand4].word}
-        }
-        correctLabel.text = "Correct:\n\(Point.correct)"
-        wrongLabel.text = "Wrong:\n\(Point.wrong)"
+        
+        
+        
+        correctLabel.text = "Correct:\n\(Point.correct.count)"
+        wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -91,68 +80,28 @@ class QuizViewController: UIViewController {
     
     
     @IBAction func button1(_ sender: Any) {
-        if correctRand == 1{
-            Point.correct += 1
-        } else {
-            Point.wrong += 1
-        }
-        correctLabel.text = "Correct:\n\(Point.correct)"
-        wrongLabel.text = "Wrong:\n\(Point.wrong)"
-        if ((Point.correct+Point.wrong) % Info.flashCardArray.count) != 0{
-            self.increase()
-        }
-        if Settings.wordd {
-            wordPart.text = "\(randomArray[Point.number].word)"
-        } else {
-            wordPart.text = "\(randomArray[Point.number].def)"
-        }
-        randomize()
+        buttonThing(correctNumberThingWhyRyan: 1)
     }
     @IBAction func button2(_ sender: Any) {
-        if correctRand == 2{
-            Point.correct += 1
-        } else {
-            Point.wrong += 1
-        }
-        correctLabel.text = "Correct:\n\(Point.correct)"
-        wrongLabel.text = "Wrong:\n\(Point.wrong)"
-        if ((Point.correct+Point.wrong) % Info.flashCardArray.count) != 0{
-            self.increase()
-        }
-        if Settings.wordd {
-            wordPart.text = "\(randomArray[Point.number].word)"
-        } else {
-            wordPart.text = "\(randomArray[Point.number].def)"
-        }
-        randomize()
+        buttonThing(correctNumberThingWhyRyan: 2)
     }
     @IBAction func button3(_ sender: Any) {
-        if correctRand == 3{
-            Point.correct += 1
-        } else {
-            Point.wrong += 1
-        }
-        correctLabel.text = "Correct:\n\(Point.correct)"
-        wrongLabel.text = "Wrong:\n\(Point.wrong)"
-        if ((Point.correct+Point.wrong) % Info.flashCardArray.count) != 0{
-            self.increase()
-        }
-        if Settings.wordd {
-            wordPart.text = "\(randomArray[Point.number].word)"
-        } else {
-            wordPart.text = "\(randomArray[Point.number].def)"
-        }
-        randomize()
+        buttonThing(correctNumberThingWhyRyan: 3)
     }
     @IBAction func button4(_ sender: Any) {
-        if correctRand == 4{
-            Point.correct += 1
+        buttonThing(correctNumberThingWhyRyan: 4)
+    }
+    
+    func buttonThing(correctNumberThingWhyRyan: Int)
+    {
+        if correctRand == correctNumberThingWhyRyan {
+            Point.correct.append(randomArray[Point.number])
         } else {
-            Point.wrong += 1
+            Point.wrong.append(randomArray[Point.number])
         }
-        correctLabel.text = "Correct:\n\(Point.correct)"
-        wrongLabel.text = "Wrong:\n\(Point.wrong)"
-        if ((Point.correct+Point.wrong) % Info.flashCardArray.count) != 0{
+        correctLabel.text = "Correct:\n\(Point.correct.count)"
+        wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
+        if ((Point.correct.count + Point.wrong.count) % Info.flashCardArray.count) != 0{
             self.increase()
         }
         if Settings.wordd {
@@ -172,7 +121,7 @@ class QuizViewController: UIViewController {
     }
     
     func randomize(){
-        if ((Point.correct+Point.wrong) % Info.flashCardArray.count) == 0 {
+        if ((Point.correct.count + Point.wrong.count) % Info.flashCardArray.count) == 0 {
             print(Point.number)
             let store = randomArray[Point.number].word
             increase()
@@ -191,69 +140,74 @@ class QuizViewController: UIViewController {
         rand2 = -1
         rand3 = -1
         rand4 = -1
-        if correctRand != 1{
+        
+        if correctRand != 1 {
             rand1 = Int.random(in: 0...randomArray.count-1)
             while rand1 == Point.number{
                 rand1 = Int.random(in: 0...randomArray.count-1)
             }
         }
-        if correctRand != 2{
+        
+        if correctRand != 2 {
             rand2 = Int.random(in: 0...randomArray.count-1)
-            while rand2 == rand1 || rand2 == Point.number {
+            while rand2 == Point.number{
                 rand2 = Int.random(in: 0...randomArray.count-1)
             }
         }
-        if correctRand != 3{
+        
+        if correctRand != 3 {
             rand3 = Int.random(in: 0...randomArray.count-1)
-            while rand3 == rand1 || rand3 == rand2 || rand3 == Point.number{
+            while rand3 == Point.number{
                 rand3 = Int.random(in: 0...randomArray.count-1)
             }
         }
-        if correctRand != 4{
+        
+        if correctRand != 4 {
             rand4 = Int.random(in: 0...randomArray.count-1)
-            while rand4 == rand1 || rand4 == rand2 || rand4 == rand3 || rand4 == Point.number{
+            while rand4 == Point.number{
                 rand4 = Int.random(in: 0...randomArray.count-1)
             }
         }
 
         print("texts")
+        
         if correctRand == 1 {
-            if Settings.wordd {option1.text = randomArray[Point.number].def}
-            else {option1.text = randomArray[Point.number].word}
+            if Settings.wordd {option1!.text = randomArray[Point.number].def}
+            else {option1!.text = randomArray[Point.number].word}
         } else {
-            if Settings.wordd {option1.text = randomArray[rand1].def}
-            else {option1.text = randomArray[rand1].word}
+            if Settings.wordd {option1!.text = randomArray[rand1].def}
+            else {option1!.text = randomArray[rand1].word}
         }
         if correctRand == 2 {
-            if Settings.wordd {option2.text = randomArray[Point.number].def}
-            else {option2.text = randomArray[Point.number].word}
+            if Settings.wordd {option2!.text = randomArray[Point.number].def}
+            else {option2!.text = randomArray[Point.number].word}
         } else {
-            if Settings.wordd {option2.text = randomArray[rand2].def}
-            else {option2.text = randomArray[rand2].word}
+            if Settings.wordd {option2!.text = randomArray[rand2].def}
+            else {option2!.text = randomArray[rand2].word}
         }
         if correctRand == 3 {
-            if Settings.wordd {option3.text = randomArray[Point.number].def}
-            else {option3.text = randomArray[Point.number].word}
+            if Settings.wordd {option3!.text = randomArray[Point.number].def}
+            else {option3!.text = randomArray[Point.number].word}
         } else {
-            if Settings.wordd {option3.text = randomArray[rand3].def}
-            else {option3.text = randomArray[rand3].word}
+            if Settings.wordd {option3!.text = randomArray[rand3].def}
+            else {option3!.text = randomArray[rand3].word}
         }
         if correctRand == 4 {
-            if Settings.wordd {option4.text = randomArray[Point.number].def}
-            else {option4.text = randomArray[Point.number].word}
+            if Settings.wordd {option4!.text = randomArray[Point.number].def}
+            else {option4!.text = randomArray[Point.number].word}
         } else {
-            if Settings.wordd {option4.text = randomArray[rand4].def}
-            else {option4.text = randomArray[rand4].word}
+            if Settings.wordd {option4!.text = randomArray[rand4].def}
+            else {option4!.text = randomArray[rand4].word}
         }
     }
     
     
     func reset(){
-           Point.correct = 0
-           Point.wrong = 0
+           Point.correct = [Flashcard]()
+           Point.wrong = [Flashcard]()
            Point.number = 0
-           self.correctLabel.text = "Correct:\n\(Point.correct)"
-           self.wrongLabel.text = "Wrong:\n\(Point.wrong)"
+        self.correctLabel.text = "Correct:\n\(Point.correct.count)"
+        self.wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
         if Settings.wordd {
             self.wordPart.text = "\(randomArray[Point.number].word)"
         } else {
