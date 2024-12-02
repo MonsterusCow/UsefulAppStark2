@@ -12,6 +12,8 @@ class Settings {
     static var wordd = true
     static var deff = false
     static var resett = false
+    //normal, endless, stared
+    static var quizTypes = "normal"
 }
 
 class Point {
@@ -47,28 +49,27 @@ class QuizViewController: UIViewController {
         if Settings.resett {
             reset()
         }
-        if Settings.wordd {
-            wordPart.text = "\(randomArray[Point.number].word)"
-        } else {
-            wordPart.text = "\(randomArray[Point.number].def)"
-        }
-        
-        let options = [option1, option2, option3, option4]
-        
-        for i in 0 ..< options.count {
-            if correctRand == i + 1
-            {
-                if Settings.wordd
+        if Settings.quizTypes == "normal"{
+            if Settings.wordd {
+                wordPart.text = "\(randomArray[Point.number].word)"
+            } else {
+                wordPart.text = "\(randomArray[Point.number].def)"
+            }
+            
+            let options = [option1, option2, option3, option4]
+            
+            for i in 0 ..< options.count {
+                if correctRand == i + 1
                 {
-                    options[i]!.text = randomArray[Point.number].def
-                } else {
-                    options[i]!.text = randomArray[Point.number].word
+                    if Settings.wordd
+                    {
+                        options[i]!.text = randomArray[Point.number].def
+                    } else {
+                        options[i]!.text = randomArray[Point.number].word
+                    }
                 }
             }
         }
-        
-        
-        
         correctLabel.text = "Correct:\n\(Point.correct.count)"
         wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
     }
