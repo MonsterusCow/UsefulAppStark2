@@ -7,16 +7,37 @@
 
 import UIKit
 
-class QuizEndViewController: UIViewController {
+class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
 
     @IBOutlet weak var correctTableView: UITableView!
     
     @IBOutlet weak var wrongTableView: UITableView!
     
+    @IBOutlet weak var percentageText: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        var percentage: Double = Double(Point.correct.count) / Double(Point.correct.count + Point.wrong.count)
+        
+        percentage *= 100
+        
+        percentage = floor(percentage)
+        
+        percentageText.text = "You got \(percentage)% questions correct"
         // Do any additional setup after loading the view.
+        
+        correctTableView.delegate = self
+        correctTableView.dataSource = self
+        wrongTableView.delegate = self
+        wrongTableView.dataSource = self
     }
     
 
