@@ -9,11 +9,32 @@ import UIKit
 
 class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return tableView == correctTableView ? Point.correct.count : Point.wrong.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        if tableView == correctTableView
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
+            var string = ""
+            if Point.correct[indexPath.row].stared{
+                string = "star.fill"
+            } else {
+                string = "star"
+            }
+            cell.configure(word: Point.correct[indexPath.row].word, def: Point.correct[indexPath.row].def, image: string, num: indexPath.row)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
+            var string = ""
+            if Point.wrong[indexPath.row].stared{
+                string = "star.fill"
+            } else {
+                string = "star"
+            }
+            cell.configure(word: Point.wrong[indexPath.row].word, def: Point.wrong[indexPath.row].def, image: string, num: indexPath.row)
+            return cell
+        }
     }
     
 
