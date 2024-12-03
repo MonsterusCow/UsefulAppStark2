@@ -25,14 +25,16 @@ class ActualStudyViewController: UIViewController {
         if (Info.flashCardArray.count == 0)
         {
             createAlert(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to view flashcards")
-        }
-        noteCardImage.image = UIImage(named: "notecard")
-        wordPart.text = "\(Info.flashCardArray[number].word)"
-        tablabel.badgeColor = .red
-        if Info.flashCardArray[number].stared{
-            starImage.image = UIImage(systemName: "star.fill")
+            self.navigationController?.popViewController(animated: true)
         } else {
-        starImage.image = UIImage(systemName: "star")
+            noteCardImage.image = UIImage(named: "notecard")
+            wordPart.text = "\(Info.flashCardArray[number].word)"
+            tablabel.badgeColor = .red
+            if Info.flashCardArray[number].stared{
+                starImage.image = UIImage(systemName: "star.fill")
+            } else {
+                starImage.image = UIImage(systemName: "star")
+            }
         }
     }
     

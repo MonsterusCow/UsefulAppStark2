@@ -501,6 +501,7 @@
                         <outlet property="starImage" destination="FaL-ZZ-S4b" id="w9b-Xt-Huq"/>
                         <outlet property="tablabel" destination="5nz-hj-E9E" id="P4w-5x-fNz"/>
                         <outlet property="wordPart" destination="APb-0H-Ayj" id="xED-gQ-IJm"/>
+                        <segue destination="K2L-hx-0ql" kind="showDetail" identifier="toMenu" id="fhX-jm-io0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqb-fE-HyL" sceneMemberID="firstResponder"/>
@@ -928,7 +929,7 @@
             <objects>
                 <viewController id="K2L-hx-0ql" customClass="MenuViewController" customModule="UsefulAppStark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xnP-IU-bQ3">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-jc-voj">
@@ -1217,6 +1218,9 @@
             <point key="canvasLocation" x="-425.19083969465646" y="723.94366197183103"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fhX-jm-io0"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.backward.fill" catalog="system" width="128" height="104"/>
         <image name="arrowshape.forward.fill" catalog="system" width="128" height="104"/>
@@ -1237,10 +1241,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
