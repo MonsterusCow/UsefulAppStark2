@@ -22,6 +22,10 @@ class ActualStudyViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if (Info.flashCardArray.count == 0)
+        {
+            createAlert(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to view flashcards")
+        }
         noteCardImage.image = UIImage(named: "notecard")
         wordPart.text = "\(Info.flashCardArray[number].word)"
         tablabel.badgeColor = .red
@@ -83,6 +87,17 @@ class ActualStudyViewController: UIViewController {
             starImage.image = UIImage(systemName: "star.fill")
             Info.flashCardArray[number].stared = true
         }
+    }
+    
+    func createAlert(alertName: String, alertTitle: String)
+    {
+        let alert = UIAlertController(title: alertTitle, message: alertName, preferredStyle: UIAlertController.Style.alert)
+        let alertAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+        
+        alert.addAction(alertAction)
+        
+        self.present(alert, animated: true)
+        
     }
     
     
