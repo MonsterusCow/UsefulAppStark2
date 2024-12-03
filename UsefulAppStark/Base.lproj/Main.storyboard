@@ -707,6 +707,7 @@
                         <outlet property="option4" destination="Ir0-ub-0lD" id="W38-yb-Xpm"/>
                         <outlet property="wordPart" destination="ff7-oc-EH1" id="zgV-B5-gBW"/>
                         <outlet property="wrongLabel" destination="eLW-OI-bp9" id="5gA-Ud-Ihh"/>
+                        <segue destination="y5S-8y-ig4" kind="show" identifier="endQuiz" id="Mxn-B5-Won"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH1-uz-Vg4" sceneMemberID="firstResponder"/>
@@ -1208,8 +1209,10 @@
                     <navigationItem key="navigationItem" id="eEU-3D-97Y"/>
                     <connections>
                         <outlet property="correctTableView" destination="5FD-Ni-1zK" id="vTg-2c-46o"/>
+                        <outlet property="correctText" destination="XuF-os-E3X" id="ELO-Qg-Dzg"/>
                         <outlet property="percentageText" destination="KNL-hN-aeq" id="8Qm-kF-4mJ"/>
                         <outlet property="wrongTableView" destination="cGm-dU-Odw" id="YwG-1e-q9G"/>
+                        <outlet property="wrongText" destination="OGY-jm-cQB" id="mZG-Y1-PSM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X93-XT-0ZQ" sceneMemberID="firstResponder"/>
@@ -1237,10 +1240,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
