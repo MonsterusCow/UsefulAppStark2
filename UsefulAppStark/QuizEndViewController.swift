@@ -15,6 +15,10 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var percentageText: UILabel!
     
+    @IBOutlet weak var correctText: UILabel!
+    
+    @IBOutlet weak var wrongText: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -36,6 +40,9 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         wrongTableView.reloadData()
         correctTableView.reloadData()
+        
+        correctText.text = "Correct: \(Point.correct)"
+        wrongText.text = "Wrong: \(Point.wrong)"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

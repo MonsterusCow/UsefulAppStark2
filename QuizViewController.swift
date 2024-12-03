@@ -103,7 +103,7 @@ class QuizViewController: UIViewController {
         correctLabel.text = "Correct:\n\(Point.correct.count)"
         wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
         if ((Point.correct.count + Point.wrong.count) % Info.flashCardArray.count) != 0{
-            self.increase()
+            self.moveOn()
         }
         if Settings.wordd {
             wordPart.text = "\(randomArray[Point.number].word)"
@@ -113,11 +113,20 @@ class QuizViewController: UIViewController {
         randomize()
     }
     
-    func increase(){
-        if Point.number == randomArray.count-1 {
-            Point.number = 0
-        } else {
-            Point.number += 1
+    func moveOn(){
+        if Settings.quizTypes == "normal"{
+            if Point.number == randomArray.count-1 {
+                performSegue(withIdentifier: "endQuiz", sender: nil)
+            } else {
+                Point.number += 1
+            }
+        }
+        if Settings.quizTypes == "endless"{
+            if Point.number == randomArray.count-1 {
+                Point.number = 0
+            } else {
+                Point.number += 1
+            }
         }
     }
     
@@ -125,7 +134,7 @@ class QuizViewController: UIViewController {
         if ((Point.correct.count + Point.wrong.count) % Info.flashCardArray.count) == 0 {
             print(Point.number)
             let store = randomArray[Point.number].word
-            increase()
+            moveOn()
             randomArray = Info.flashCardArray.shuffled()
             while store == randomArray[Point.number].word{
                 randomArray = Info.flashCardArray.shuffled()
