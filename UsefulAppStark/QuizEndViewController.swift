@@ -8,6 +8,36 @@
 import UIKit
 
 class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var correctTableView: UITableView!
+    
+    @IBOutlet weak var wrongTableView: UITableView!
+    
+    @IBOutlet weak var percentageText: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        correctTableView.delegate = self
+        correctTableView.dataSource = self
+        wrongTableView.delegate = self
+        wrongTableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        var percentage: Double = Double(Point.correct.count) / Double(Point.correct.count + Point.wrong.count)
+        
+        percentage *= 100
+        
+        percentage = floor(percentage)
+        
+        percentageText.text = "You got \(percentage)% questions correct"
+        
+        wrongTableView.reloadData()
+        correctTableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableView == correctTableView ? Point.correct.count : Point.wrong.count
     }
@@ -36,31 +66,6 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         }
     }
-    
-
-    @IBOutlet weak var correctTableView: UITableView!
-    
-    @IBOutlet weak var wrongTableView: UITableView!
-    
-    @IBOutlet weak var percentageText: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        var percentage: Double = Double(Point.correct.count) / Double(Point.correct.count + Point.wrong.count)
-        
-        percentage *= 100
-        
-        percentage = floor(percentage)
-        
-        percentageText.text = "You got \(percentage)% questions correct"
-        // Do any additional setup after loading the view.
-        
-        correctTableView.delegate = self
-        correctTableView.dataSource = self
-        wrongTableView.delegate = self
-        wrongTableView.dataSource = self
-    }
-    
 
     /*
     // MARK: - Navigation
