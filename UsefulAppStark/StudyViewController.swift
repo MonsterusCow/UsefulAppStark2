@@ -22,8 +22,13 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getStared()
-        tableViewThing.reloadData()
+        if (Info.flashCardArray.count == 0)
+        {
+            createAlert(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to study flashcards")
+        } else {
+            getStared()
+            tableViewThing.reloadData()
+        }
     }
     
     @IBAction func switchAction(_ sender: Any) {
@@ -94,6 +99,18 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
             Info.flashCardArray.remove(at: indexPath.row)
             tableViewThing.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    func createAlert(alertName: String, alertTitle: String)
+    {
+        let alert = UIAlertController(title: alertTitle, message: alertName, preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default){ (action) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true)
+        
     }
     
 

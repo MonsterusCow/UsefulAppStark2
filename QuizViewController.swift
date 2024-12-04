@@ -45,33 +45,40 @@ class QuizViewController: UIViewController {
         randomize()
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        if Settings.resett {
-            reset()
-        }
-        if Settings.quizType == "normal"{
-            if Settings.wordd {
-                wordPart.text = "\(randomArray[Point.number].word)"
-            } else {
-                wordPart.text = "\(randomArray[Point.number].def)"
+    override func viewWillAppear(_ animated: Bool){
+        if (Info.flashCardArray.count == 0)
+        {
+            createAlert(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to view flashcards")
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            if Settings.resett {
+                reset()
             }
-            
-            let options = [option1, option2, option3, option4]
-            
-            for i in 0 ..< options.count {
-                if correctRand == i + 1
-                {
-                    if Settings.wordd
+            if Settings.quizType == "normal"{
+                if Settings.wordd {
+                    wordPart.text = "\(randomArray[Point.number].word)"
+                } else {
+                    wordPart.text = "\(randomArray[Point.number].def)"
+                }
+                
+                let options = [option1, option2, option3, option4]
+                
+                for i in 0 ..< options.count {
+                    if correctRand == i + 1
                     {
-                        options[i]!.text = randomArray[Point.number].def
-                    } else {
-                        options[i]!.text = randomArray[Point.number].word
+                        if Settings.wordd
+                        {
+                            options[i]!.text = randomArray[Point.number].def
+                        } else {
+                            options[i]!.text = randomArray[Point.number].word
+                        }
                     }
                 }
+                
             }
+            correctLabel.text = "Correct:\n\(Point.correct.count)"
+            wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
         }
-        correctLabel.text = "Correct:\n\(Point.correct.count)"
-        wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -226,5 +233,19 @@ class QuizViewController: UIViewController {
            self.randomize()
            Settings.resett = false
    }
+    
+    func createAlert(alertName: String, alertTitle: String)
+    {
+        let alert = UIAlertController(title: alertTitle, message: alertName, preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default){ (action) in
+        }
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true)
+        
+    }
+    
+    
+    
 
 }
