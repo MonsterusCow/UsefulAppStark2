@@ -13,7 +13,7 @@ class Settings {
     static var deff = false
     static var resett = false
     //normal, endless, stared
-    static var quizTypes = "normal"
+    static var quizType = "normal"
 }
 
 class Point {
@@ -49,7 +49,7 @@ class QuizViewController: UIViewController {
         if Settings.resett {
             reset()
         }
-        if Settings.quizTypes == "normal"{
+        if Settings.quizType == "normal"{
             if Settings.wordd {
                 wordPart.text = "\(randomArray[Point.number].word)"
             } else {
@@ -114,14 +114,14 @@ class QuizViewController: UIViewController {
     }
     
     func moveOn(){
-        if Settings.quizTypes == "normal"{
+        if Settings.quizType == "normal"{
             if Point.number == randomArray.count-1 {
                 performSegue(withIdentifier: "endQuiz", sender: nil)
             } else {
                 Point.number += 1
             }
         }
-        if Settings.quizTypes == "endless"{
+        if Settings.quizType == "endless"{
             if Point.number == randomArray.count-1 {
                 Point.number = 0
             } else {
