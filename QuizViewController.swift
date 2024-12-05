@@ -141,7 +141,10 @@ class QuizViewController: UIViewController {
         if ((Point.correct.count + Point.wrong.count) % Info.flashCardArray.count) == 0 {
             print(Point.number)
             let store = randomArray[Point.number].word
-            moveOn()
+            if (Point.number != 0)
+            {
+                moveOn()
+            }
             randomArray = Info.flashCardArray.shuffled()
             while store == randomArray[Point.number].word{
                 randomArray = Info.flashCardArray.shuffled()
@@ -160,28 +163,28 @@ class QuizViewController: UIViewController {
         
         if correctRand != 1 {
             rand1 = Int.random(in: 0...randomArray.count-1)
-            while rand1 == Point.number{
+            while rand1 == Point.number || rand1 == rand2 || rand1 == rand3 || rand1 == rand4 {
                 rand1 = Int.random(in: 0...randomArray.count-1)
             }
         }
         
         if correctRand != 2 {
             rand2 = Int.random(in: 0...randomArray.count-1)
-            while rand2 == Point.number{
+            while rand2 == Point.number || rand2 == rand1 || rand2 == rand3 || rand2 == rand4 {
                 rand2 = Int.random(in: 0...randomArray.count-1)
             }
         }
         
         if correctRand != 3 {
             rand3 = Int.random(in: 0...randomArray.count-1)
-            while rand3 == Point.number{
+            while rand3 == Point.number || rand3 == rand1 || rand3 == rand2 || rand3 == rand4 {
                 rand3 = Int.random(in: 0...randomArray.count-1)
             }
         }
         
         if correctRand != 4 {
             rand4 = Int.random(in: 0...randomArray.count-1)
-            while rand4 == Point.number{
+            while rand4 == Point.number || rand4 == rand1 || rand4 == rand3 || rand4 == rand2 {
                 rand4 = Int.random(in: 0...randomArray.count-1)
             }
         }
