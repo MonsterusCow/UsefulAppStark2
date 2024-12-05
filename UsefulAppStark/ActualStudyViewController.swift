@@ -24,7 +24,7 @@ class ActualStudyViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if (Info.flashCardArray.count == 0)
         {
-            notEnoughCardsError(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to study flashcards")
+            notEnoughCardsError(alertName: "Create a flashcard first to study your flashcards", alertTitle: "Create Some Flashcards")
         } else {
             noteCardImage.image = UIImage(named: "notecard")
             wordPart.text = "\(Info.flashCardArray[number].word)"

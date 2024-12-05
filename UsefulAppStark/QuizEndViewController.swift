@@ -46,9 +46,11 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func quizAgain(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func goToMenu(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 0
     }
     
     

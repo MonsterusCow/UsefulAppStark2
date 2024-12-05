@@ -42,13 +42,16 @@ class QuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         randomArray = Info.flashCardArray.shuffled()
-        randomize()
+        if (Info.flashCardArray.count > 3)
+        {
+            randomize()
+        }
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     override func viewWillAppear(_ animated: Bool){
-        if (Info.flashCardArray.count == 0)
+        if (Info.flashCardArray.count < 4)
         {
-            notEnoughCardsError(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to view flashcards")
+            notEnoughCardsError(alertName: "Create 4 flashcards first to take a quiz", alertTitle: "Create Some Flashcards")
         } else {
             if Settings.resett {
                 reset()

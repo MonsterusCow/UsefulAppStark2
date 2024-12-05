@@ -24,7 +24,7 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         if (Info.flashCardArray.count == 0)
         {
-            notEnoughCardsError(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to study flashcards")
+            notEnoughCardsError(alertName: "Create a flashcard first to view your flashcards", alertTitle: "Create Some Flashcards")
         } else {
             getStared()
             tableViewThing.reloadData()
