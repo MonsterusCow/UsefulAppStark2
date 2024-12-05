@@ -392,7 +392,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VV2-5G-lo8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="364" y="754"/>
+            <point key="canvasLocation" x="-347" y="932"/>
         </scene>
         <!--Study-->
         <scene sceneID="skb-A2-RKw">
@@ -507,7 +507,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqb-fE-HyL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079" y="754"/>
+            <point key="canvasLocation" x="834" y="932"/>
         </scene>
         <!--Quiz-->
         <scene sceneID="QgB-ME-Iyo">
@@ -714,7 +714,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH1-uz-Vg4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797.709923664122" y="711.97183098591552"/>
+            <point key="canvasLocation" x="1763" y="944"/>
         </scene>
         <!--Config View Controller-->
         <scene sceneID="ULv-v3-xZg">
@@ -883,7 +883,7 @@ Current: Normal</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c89-7x-q8i" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2490.8396946564885" y="711.97183098591552"/>
+            <point key="canvasLocation" x="3051" y="963"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="I2R-8F-i8o">
@@ -1214,7 +1214,7 @@ Current: Normal</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X93-XT-0ZQ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-425.19083969465646" y="723.94366197183103"/>
+            <point key="canvasLocation" x="-1349" y="944"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
