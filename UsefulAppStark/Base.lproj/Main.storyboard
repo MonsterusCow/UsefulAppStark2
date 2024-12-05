@@ -714,7 +714,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH1-uz-Vg4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1807" y="754"/>
+            <point key="canvasLocation" x="1797.709923664122" y="711.97183098591552"/>
         </scene>
         <!--Config View Controller-->
         <scene sceneID="ULv-v3-xZg">
@@ -906,7 +906,7 @@ Current: Normal</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FV2-lI-BGH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079" y="30"/>
+            <point key="canvasLocation" x="998" y="30"/>
         </scene>
         <!--Menu-->
         <scene sceneID="q17-nh-u6M">
@@ -992,19 +992,13 @@ Current: Normal</string>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Quiz again"/>
-                                <connections>
-                                    <action selector="quizAgain:" destination="y5S-8y-ig4" eventType="touchUpInside" id="VZW-dO-yYj"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWr-xB-z7F">
                                 <rect key="frame" x="210" y="208" width="155" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Go again"/>
-                                <connections>
-                                    <action selector="goToMenu:" destination="y5S-8y-ig4" eventType="touchUpInside" id="IcI-ig-Ndz"/>
-                                </connections>
+                                <buttonConfiguration key="configuration" style="filled" title="Go back"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You got 0% questions correct!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNL-hN-aeq">
                                 <rect key="frame" x="20" y="127" width="355" height="84"/>
@@ -1016,7 +1010,10 @@ Current: Normal</string>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5FD-Ni-1zK">
                                 <rect key="frame" x="0.0" y="325" width="393" height="183"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="tableCellBlueTextColor"/>
+                                <color key="separatorColor" systemColor="systemCyanColor"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemCyanColor"/>
+                                <color key="sectionIndexTrackingBackgroundColor" systemColor="systemCyanColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellBeHere" rowHeight="92" id="tCj-zj-ZCX" customClass="CellStuff" customModule="UsefulAppStark" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="92"/>
@@ -1067,6 +1064,7 @@ Current: Normal</string>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" systemColor="tableCellBlueTextColor"/>
                                             <constraints>
                                                 <constraint firstItem="pxt-bx-4d7" firstAttribute="leading" secondItem="0OF-ul-9qR" secondAttribute="leading" id="53r-0M-3IP"/>
                                                 <constraint firstAttribute="bottom" secondItem="pxt-bx-4d7" secondAttribute="bottom" id="Jxo-Sa-hsR"/>
@@ -1117,7 +1115,9 @@ Current: Normal</string>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cGm-dU-Odw">
                                 <rect key="frame" x="0.0" y="574" width="393" height="183"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="tableCellBlueTextColor"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="tableCellBlueTextColor"/>
+                                <color key="sectionIndexTrackingBackgroundColor" systemColor="systemCyanColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellBeHere" rowHeight="92" id="tZp-oA-92c" customClass="CellStuff" customModule="UsefulAppStark" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="92"/>
@@ -1175,6 +1175,7 @@ Current: Normal</string>
                                                 <constraint firstAttribute="bottom" secondItem="GdK-DS-v78" secondAttribute="bottom" id="wbk-uu-HcI"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="tableCellBlueTextColor"/>
                                         <connections>
                                             <outlet property="defLabel" destination="n8k-4o-Yuz" id="Mcl-WB-6Qe"/>
                                             <outlet property="starImage" destination="xF2-Dt-iTf" id="JWU-qY-RiS"/>
@@ -1240,6 +1241,9 @@ Current: Normal</string>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tableCellBlueTextColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

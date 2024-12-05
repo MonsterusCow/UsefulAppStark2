@@ -41,8 +41,8 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         wrongTableView.reloadData()
         correctTableView.reloadData()
         
-        correctText.text = "Correct: \(Point.correct)"
-        wrongText.text = "Wrong: \(Point.wrong)"
+        correctText.text = "Correct: \(Point.correct.count)"
+        wrongText.text = "Wrong: \(Point.wrong.count)"
     }
     
     @IBAction func quizAgain(_ sender: Any) {
