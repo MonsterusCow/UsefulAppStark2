@@ -21,6 +21,10 @@ class Info {
     static var flashCardArray = [Flashcard]()
 }
 
+class Error {
+    
+}
+
 import UIKit
 
 class MenuViewController: UIViewController {
@@ -28,7 +32,8 @@ class MenuViewController: UIViewController {
     var defaults = UserDefaults.standard
     var encoder = JSONEncoder()
     var decoder = JSONDecoder()
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //enable for one run to clear saved cards

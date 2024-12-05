@@ -24,7 +24,7 @@ class ActualStudyViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if (Info.flashCardArray.count == 0)
         {
-            createAlert(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to study flashcards")
+            notEnoughCardsError(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to study flashcards")
         } else {
             noteCardImage.image = UIImage(named: "notecard")
             wordPart.text = "\(Info.flashCardArray[number].word)"
@@ -90,18 +90,6 @@ class ActualStudyViewController: UIViewController {
         }
     }
     
-    func createAlert(alertName: String, alertTitle: String)
-    {
-        let alert = UIAlertController(title: alertTitle, message: alertName, preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default){ (action) in
-            self.navigationController?.popViewController(animated: true)
-        }
-        alert.addAction(okAction)
-        
-        self.present(alert, animated: true)
-        
-    }
-    
     
     /*
     // MARK: - Navigation
@@ -112,5 +100,15 @@ class ActualStudyViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func notEnoughCardsError(alertName: String, alertTitle: String)
+    {
+        let alert = UIAlertController(title: alertTitle, message: alertName, preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default){ (action) in
+            self.tabBarController?.selectedIndex = 0
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
+    }
 
 }

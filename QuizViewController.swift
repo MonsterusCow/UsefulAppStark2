@@ -48,8 +48,7 @@ class QuizViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool){
         if (Info.flashCardArray.count == 0)
         {
-            createAlert(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to view flashcards")
-            self.navigationController?.popViewController(animated: true)
+            notEnoughCardsError(alertName: "Not enough flashcards", alertTitle: "Create a flashcard first to view flashcards")
         } else {
             if Settings.resett {
                 reset()
@@ -234,17 +233,15 @@ class QuizViewController: UIViewController {
            Settings.resett = false
    }
     
-    func createAlert(alertName: String, alertTitle: String)
+    func notEnoughCardsError(alertName: String, alertTitle: String)
     {
         let alert = UIAlertController(title: alertTitle, message: alertName, preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default){ (action) in
+            self.tabBarController?.selectedIndex = 0
         }
         alert.addAction(okAction)
-        
         self.present(alert, animated: true)
-        
     }
-    
     
     
 

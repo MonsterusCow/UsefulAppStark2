@@ -45,6 +45,15 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         wrongText.text = "Wrong: \(Point.wrong)"
     }
     
+    @IBAction func quizAgain(_ sender: Any) {
+    }
+    
+    @IBAction func goToMenu(_ sender: Any) {
+    }
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableView == correctTableView ? Point.correct.count : Point.wrong.count
     }
@@ -73,15 +82,5 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
