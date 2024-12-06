@@ -22,7 +22,11 @@ class ConfigViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func first(_ sender: Any) {
+    
+    
+    
+    
+    @IBAction func quizWord(_ sender: Any) {
         let alert = UIAlertController(title: "Test word?", message: "Would you like quiz using the word and answer with the definition?", preferredStyle: UIAlertController.Style.alert)
         let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil)
         let yesAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default){ (action) in
@@ -34,7 +38,7 @@ class ConfigViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    @IBAction func second(_ sender: Any) {
+    @IBAction func quizDef(_ sender: Any) {
         let alert = UIAlertController(title: "Test definition?", message: "Would you like quiz using the definition and answer with the word?", preferredStyle: UIAlertController.Style.alert)
         let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil)
         let yesAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default){ (action) in
@@ -44,13 +48,6 @@ class ConfigViewController: UIViewController {
         alert.addAction(yesAction)
         alert.addAction(noAction)
         self.present(alert, animated: true)
-    }
-    
-    @IBAction func selectQuizType(_ sender: UIAction){
-        if choice != sender.title {
-            choice = sender.title
-            createAlert(alertName: "If you change quiz types this will reset the quiz, are you sure?", alertTitle: "Reset?")
-        }
     }
     
     @IBAction func reset(_ sender: Any) {
