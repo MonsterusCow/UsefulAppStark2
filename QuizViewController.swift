@@ -12,8 +12,10 @@ class Settings {
     static var wordd = true
     static var deff = false
     static var resett = false
-    //normal, endless, stared
-    static var quizType = "normal"
+    //normal, endless
+    static var quizLength = "normal"
+    //normal, stared
+    static var quizType = "stared"
 }
 
 class Point {
@@ -41,7 +43,16 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        randomArray = Info.flashCardArray.shuffled()
+        if Settings.quizType == "normal"{
+            randomArray = Info.flashCardArray.shuffled()
+        }
+        if Settings.quizType == "stared"{
+            for i in 0..<Info.flashCardArray.count {
+                if Info.flashCardArray[i].stared {
+                    randomArray.append(Info.flashCardArray[i])
+                }
+            }
+        }
         if (Info.flashCardArray.count > 3)
         {
             randomize()
@@ -56,7 +67,7 @@ class QuizViewController: UIViewController {
             if Settings.resett {
                 reset()
             }
-            if Settings.quizType == "normal"{
+            if Settings.quizLength == "normal"{
                 if Settings.wordd {
                     wordPart.text = "\(randomArray[Point.number].word)"
                 } else {
@@ -123,14 +134,14 @@ class QuizViewController: UIViewController {
     }
     
     func moveOn(){
-        if Settings.quizType == "normal"{
+        if Settings.quizLength == "normal"{
             if Point.number == randomArray.count-1 {
                 performSegue(withIdentifier: "endQuiz", sender: nil)
             } else {
                 Point.number += 1
             }
         }
-        if Settings.quizType == "endless"{
+        if Settings.quizLength == "endless"{
             if Point.number == randomArray.count-1 {
                 Point.number = 0
             } else {
