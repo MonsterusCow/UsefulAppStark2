@@ -54,8 +54,6 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableView == correctTableView ? Point.correct.count : Point.wrong.count
     }

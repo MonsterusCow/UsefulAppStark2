@@ -35,7 +35,6 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
          } else {
              Info.flashCardArray.append(Flashcard(word: wordTextView.text, def: defTextView.text, stared: false))
           }
-         createAgain()
      }
     
     func nuhUH(alertText: String){
@@ -60,6 +59,10 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
          alert.addAction(yesAction)
          alert.addAction(noAction)
                 self.present(alert, animated: true)
+    }
+    
+    func instantGratification(){
+        
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
