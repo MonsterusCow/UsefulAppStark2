@@ -15,7 +15,7 @@ class Settings {
     //normal, endless
     static var quizLength = "normal"
     //normal, stared
-    static var quizType = "stared"
+    static var quizType = "normal"
 }
 
 class Point {
@@ -43,19 +43,7 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if Settings.quizType == "normal"{
-            randomArray = Info.flashCardArray.shuffled()
-        }
-        if Settings.quizType == "stared"{
-            randomArray = []
-            for i in 0..<Info.flashCardArray.count {
-                if Info.flashCardArray[i].stared {
-                    randomArray.append(Info.flashCardArray[i])
-                }
-            }
-        }
-        if (Info.flashCardArray.count > 3)
-        {
+        if (Info.flashCardArray.count > 3){
             randomize()
         }
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -68,7 +56,7 @@ class QuizViewController: UIViewController {
             if Settings.resett {
                 reset()
             }
-            if Settings.quizLength == "normal"{
+//            if Settings.quizLength == "normal"{
                 if Settings.wordd {
                     wordPart.text = "\(randomArray[Point.number].word)"
                 } else {
@@ -89,7 +77,7 @@ class QuizViewController: UIViewController {
                     }
                 }
                 
-            }
+//            }
             correctLabel.text = "Correct:\n\(Point.correct.count)"
             wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
         }
@@ -154,14 +142,34 @@ class QuizViewController: UIViewController {
     func randomize(){
         if ((Point.correct.count + Point.wrong.count) % Info.flashCardArray.count) == 0 {
             print(Point.number)
-            let store = randomArray[Point.number].word
+            let lastQuestion = randomArray[Point.number].word
             if (Point.number != 0)
             {
                 moveOn()
             }
-            randomArray = Info.flashCardArray.shuffled()
-            while store == randomArray[Point.number].word{
+            if Settings.quizType == "normal"{
                 randomArray = Info.flashCardArray.shuffled()
+            }
+            if Settings.quizType == "stared"{
+                randomArray = []
+                for i in 0..<Info.flashCardArray.count {
+                    if Info.flashCardArray[i].stared {
+                        randomArray.append(Info.flashCardArray[i])
+                    }
+                }
+            }
+            while lastQuestion == randomArray[Point.number].word{
+                if Settings.quizType == "normal"{
+                    randomArray = Info.flashCardArray.shuffled()
+                }
+                if Settings.quizType == "stared"{
+                    randomArray = []
+                    for i in 0..<Info.flashCardArray.count {
+                        if Info.flashCardArray[i].stared {
+                            randomArray.append(Info.flashCardArray[i])
+                        }
+                    }
+                }
             }
             if Settings.wordd {
                 wordPart.text = "\(randomArray[Point.number].word)"
@@ -235,6 +243,16 @@ class QuizViewController: UIViewController {
         }
     }
     
+    @IBAction func resetButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Reset?", message: "Would you like to reset the quiz?", preferredStyle: UIAlertController.Style.alert)
+        let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil)
+        let yesAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default){ (action) in
+            self.reset()
+        }
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        self.present(alert, animated: true)
+    }
     
     func reset(){
            Point.correct = [Flashcard]()
@@ -242,12 +260,12 @@ class QuizViewController: UIViewController {
            Point.number = 0
         self.correctLabel.text = "Correct:\n\(Point.correct.count)"
         self.wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
+        self.randomize()
         if Settings.wordd {
             self.wordPart.text = "\(randomArray[Point.number].word)"
         } else {
             self.wordPart.text = "\(randomArray[Point.number].def)"
         }
-           self.randomize()
            Settings.resett = false
    }
     
