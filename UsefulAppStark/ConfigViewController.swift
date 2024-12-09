@@ -10,13 +10,16 @@ import UIKit
 class ConfigViewController: UIViewController {
     
     @IBOutlet weak var selectQuizLabel: UILabel!
-    
     @IBOutlet weak var normalQuizLabel: UILabel!
-    
+    @IBOutlet weak var normalBackground: UIButton!
     @IBOutlet weak var endlessQuizLabel: UILabel!
+    @IBOutlet weak var endlessBackground: UIButton!
     @IBOutlet weak var staredQuizLabel: UILabel!
+    @IBOutlet weak var staredBackground: UIButton!
     @IBOutlet weak var wordQuizLabel: UILabel!
+    @IBOutlet weak var workBackground: UIButton!
     @IBOutlet weak var defQuizLabel: UILabel!
+    @IBOutlet weak var defBackground: UIButton!
     var choice = ""
     
     override func viewDidLoad() {
@@ -30,7 +33,18 @@ class ConfigViewController: UIViewController {
     }
     
     
+    @IBAction func normalQuizSet(_ sender: Any) {
+    }
     
+    @IBAction func endlessQuizSet(_ sender: Any) {
+    }
+    
+    @IBAction func staredQuizSet(_ sender: Any) {
+    }
+    
+    @IBAction func goQuiz(_ sender: Any) {
+        performSegue(withIdentifier: "goQuiz", sender: nil)
+    }
     
     
     @IBAction func quizWord(_ sender: Any) {
