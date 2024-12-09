@@ -12,6 +12,7 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var wordTextView: UITextView!
     @IBOutlet weak var defTextView: UITextView!
     
+    @IBOutlet weak var createdCards: UITextView!
     @IBOutlet weak var createdLabel: UILabel!
     @IBOutlet weak var createdBackground: UIButton!
     
@@ -27,6 +28,10 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         createdLabel.isHidden = true
         createdBackground.isHidden = true
+        createdCards.text += "**Created Flashcards:**\n\n"
+        for flashcard in Info.flashCardArray {
+            createdCards.text += flashcard.word + "\n"
+        }
     }
     
 

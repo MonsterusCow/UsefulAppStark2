@@ -238,6 +238,7 @@
                     <navigationItem key="navigationItem" id="4Ir-1Z-KBQ"/>
                     <connections>
                         <outlet property="createdBackground" destination="vdf-Hk-Mz4" id="UVQ-zU-ijN"/>
+                        <outlet property="createdCards" destination="pD3-u3-JB2" id="tMo-s5-6kB"/>
                         <outlet property="createdLabel" destination="n75-lW-Maz" id="ahB-me-wqv"/>
                         <outlet property="defTextView" destination="mqF-Fv-NPa" id="Hqu-ac-6jq"/>
                         <outlet property="wordTextView" destination="0PT-TW-rDi" id="BJ5-em-ECd"/>
