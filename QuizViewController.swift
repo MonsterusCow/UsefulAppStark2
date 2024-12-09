@@ -47,6 +47,7 @@ class QuizViewController: UIViewController {
             randomArray = Info.flashCardArray.shuffled()
         }
         if Settings.quizType == "stared"{
+            randomArray = []
             for i in 0..<Info.flashCardArray.count {
                 if Info.flashCardArray[i].stared {
                     randomArray.append(Info.flashCardArray[i])

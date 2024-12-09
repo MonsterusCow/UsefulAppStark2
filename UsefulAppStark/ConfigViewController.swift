@@ -10,6 +10,13 @@ import UIKit
 class ConfigViewController: UIViewController {
     
     @IBOutlet weak var selectQuizLabel: UILabel!
+    
+    @IBOutlet weak var normalQuizLabel: UILabel!
+    
+    @IBOutlet weak var endlessQuizLabel: UILabel!
+    @IBOutlet weak var staredQuizLabel: UILabel!
+    @IBOutlet weak var wordQuizLabel: UILabel!
+    @IBOutlet weak var defQuizLabel: UILabel!
     var choice = ""
     
     override func viewDidLoad() {

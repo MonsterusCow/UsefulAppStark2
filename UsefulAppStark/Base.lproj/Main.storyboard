@@ -1353,7 +1353,7 @@ Current: Normal</string>
                                     <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stared Quiz" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="BAm-dx-4zW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Starred Quiz" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="BAm-dx-4zW">
                                 <rect key="frame" x="28" y="408" width="336" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemCyanColor"/>
@@ -1381,6 +1381,13 @@ Current: Normal</string>
                         </imageReference>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="9XL-nn-8dI"/>
+                    <connections>
+                        <outlet property="defQuizLabel" destination="e9t-xw-dxX" id="ZFP-jn-y7s"/>
+                        <outlet property="endlessQuizLabel" destination="6JA-u8-JKW" id="Kdt-cc-dIy"/>
+                        <outlet property="normalQuizLabel" destination="VlB-aU-9Ih" id="tlh-8Q-eND"/>
+                        <outlet property="staredQuizLabel" destination="BAm-dx-4zW" id="Z3i-3g-N0h"/>
+                        <outlet property="wordQuizLabel" destination="xFb-51-z6U" id="hcf-Bc-sN3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ozx-zl-c92" sceneMemberID="firstResponder"/>
             </objects>
