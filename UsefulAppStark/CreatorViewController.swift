@@ -12,6 +12,7 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var wordTextView: UITextView!
     @IBOutlet weak var defTextView: UITextView!
     
+    @IBOutlet weak var createdCards: UITextView!
     @IBOutlet weak var createdLabel: UILabel!
     @IBOutlet weak var createdBackground: UIButton!
     
@@ -19,6 +20,7 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         wordTextView.delegate = self
         defTextView.delegate = self
+        createdCards.layer.cornerRadius = 20
         self.navigationItem.setHidesBackButton(true, animated: true)
 
         // Do any additional setup after loading the view.
@@ -27,6 +29,23 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         createdLabel.isHidden = true
         createdBackground.isHidden = true
+        var fullText = "Created Flashcards:\n\n"
+                
+        for flashcard in Info.flashCardArray {
+            fullText += flashcard.word + "\n"
+        }
+
+        let attributedString = NSMutableAttributedString(string: fullText)
+        
+        let defaultFont = UIFont.systemFont(ofSize: 24)
+        attributedString.addAttribute(.font, value: defaultFont, range: NSRange(location: 0, length: fullText.count))
+
+        let boldRange = (fullText as NSString).range(of: "Created Flashcards:")
+
+        attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 24), range: boldRange)
+
+        createdCards.attributedText = attributedString
+
     }
     
 
