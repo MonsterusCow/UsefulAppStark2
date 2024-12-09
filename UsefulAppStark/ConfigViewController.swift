@@ -34,12 +34,31 @@ class ConfigViewController: UIViewController {
     
     
     @IBAction func normalQuizSet(_ sender: Any) {
+        Settings.quizLength = "normal"
+        normalBackground.backgroundColor = UIColor(red: 117, green: 114, blue: 106, alpha: 1)
+        normalQuizLabel.backgroundColor = UIColor(red: 117, green: 114, blue: 106, alpha: 1)
+        endlessBackground.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        endlessQuizLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     }
     
     @IBAction func endlessQuizSet(_ sender: Any) {
+        Settings.quizLength = "endless"
+        endlessBackground.backgroundColor = UIColor(red: 117, green: 114, blue: 106, alpha: 1)
+        endlessQuizLabel.backgroundColor = UIColor(red: 117, green: 114, blue: 106, alpha: 1)
+        normalBackground.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        normalQuizLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     }
     
     @IBAction func staredQuizSet(_ sender: Any) {
+        if Settings.quizType == "normal"{
+            Settings.quizType = "stared"
+            staredQuizLabel.backgroundColor = UIColor(red: 117/255, green: 114/255, blue: 106/255, alpha: 1)
+            staredBackground.tintColor = UIColor(red: 117/255, green: 114/255, blue: 106/255, alpha: 1)
+        } else {
+            Settings.quizType = "normal"
+            staredQuizLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+            staredBackground.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        }
     }
     
     @IBAction func goQuiz(_ sender: Any) {
