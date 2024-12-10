@@ -24,8 +24,9 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         if (Info.flashCardArray.count == 0)
         {
-            notEnoughCardsError(alertName: "Create a flashcard first to view your flashcards", alertTitle: "Create Some Flashcards")
+            notEnoughCardsError(alertMessage: "Create a flashcard first to view your flashcards", alertTitle: "Create Some Flashcards")
         } else {
+            Info.prevTabBar = 3
             getStared()
             tableViewThing.reloadData()
         }
@@ -98,14 +99,18 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if editingStyle == .delete {
             Info.flashCardArray.remove(at: indexPath.row)
             tableViewThing.deleteRows(at: [indexPath], with: .fade)
+            if Info.flashCardArray.count == 0 {
+                Info.prevTabBar = 0
+                notEnoughCardsError(alertMessage: "There are no more flashcards", alertTitle: "None left")
+            }
         }
     }
     
-    func notEnoughCardsError(alertName: String, alertTitle: String)
+    func notEnoughCardsError(alertMessage: String, alertTitle: String)
     {
-        let alert = UIAlertController(title: alertTitle, message: alertName, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default){ (action) in
-            self.tabBarController?.selectedIndex = 0
+            self.tabBarController?.selectedIndex = Info.prevTabBar
         }
         alert.addAction(okAction)
         self.present(alert, animated: true)

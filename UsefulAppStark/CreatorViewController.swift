@@ -27,6 +27,7 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        Info.prevTabBar = 1
         createdLabel.isHidden = true
         createdBackground.isHidden = true
         var fullText = "Created Flashcards:\n\n"

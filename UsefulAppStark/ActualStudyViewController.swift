@@ -22,10 +22,10 @@ class ActualStudyViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if (Info.flashCardArray.count == 0)
-        {
-            notEnoughCardsError(alertName: "Create a flashcard first to study your flashcards", alertTitle: "Create Some Flashcards")
+        if (Info.flashCardArray.count == 0){
+            notEnoughCardsError(alertMessage: "Create a flashcard first to study your flashcards", alertTitle: "Create Some Flashcards")
         } else {
+            Info.prevTabBar = 2
             noteCardImage.image = UIImage(named: "notecard")
             wordPart.text = "\(Info.flashCardArray[number].word)"
             tablabel.badgeColor = .red
@@ -90,22 +90,11 @@ class ActualStudyViewController: UIViewController {
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    func notEnoughCardsError(alertName: String, alertTitle: String)
+    func notEnoughCardsError(alertMessage: String, alertTitle: String)
     {
-        let alert = UIAlertController(title: alertTitle, message: alertName, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default){ (action) in
-            self.tabBarController?.selectedIndex = 0
+            self.tabBarController?.selectedIndex = Info.prevTabBar
         }
         alert.addAction(okAction)
         self.present(alert, animated: true)

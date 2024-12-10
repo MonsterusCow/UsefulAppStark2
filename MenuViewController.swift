@@ -19,6 +19,7 @@ class Flashcard: Codable {
 
 class Info {
     static var flashCardArray = [Flashcard]()
+    static var prevTabBar = 0
 }
 
 class Error {
@@ -40,7 +41,7 @@ class MenuViewController: UIViewController {
 //        defaults.set(nil, forKey: "cards")
         
         //disable for auto flashcards to be removed:
-        Info.flashCardArray = [Flashcard(word: "Word 1", def: "Definition 1", stared: true), Flashcard(word: "Word 2", def: "Definition 2", stared: false), Flashcard(word: "Word 3", def: "Definition 3", stared: true), Flashcard(word: "Word 4", def: "Definition 4", stared: false), Flashcard(word: "Word 5", def: "Definition 5", stared: false), Flashcard(word: "Word 6", def: "Definition 6", stared: false)]
+//        Info.flashCardArray = [Flashcard(word: "Word 1", def: "Definition 1", stared: true), Flashcard(word: "Word 2", def: "Definition 2", stared: false), Flashcard(word: "Word 3", def: "Definition 3", stared: true), Flashcard(word: "Word 4", def: "Definition 4", stared: false), Flashcard(word: "Word 5", def: "Definition 5", stared: false), Flashcard(word: "Word 6", def: "Definition 6", stared: false)]
         
         self.navigationItem.setHidesBackButton(true, animated: true)
         if let cardstuff = defaults.data(forKey: "cards"){
@@ -49,6 +50,10 @@ class MenuViewController: UIViewController {
             }
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        Info.prevTabBar = 0
     }
     
 

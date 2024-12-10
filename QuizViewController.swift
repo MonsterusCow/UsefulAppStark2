@@ -49,10 +49,6 @@ class QuizViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     override func viewWillAppear(_ animated: Bool){
-        if (Info.flashCardArray.count < 4)
-        {
-            notEnoughCardsError(alertName: "Create 4 flashcards first to take a quiz", alertTitle: "Create Some Flashcards")
-        } else {
             if Settings.resett {
                 reset()
             }
@@ -81,7 +77,7 @@ class QuizViewController: UIViewController {
             correctLabel.text = "Correct:\n\(Point.correct.count)"
             wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
         }
-    }
+    
     
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -140,6 +136,7 @@ class QuizViewController: UIViewController {
     }
     
     func randomize(){
+        print("randomize")
         if ((Point.correct.count + Point.wrong.count) % Info.flashCardArray.count) == 0 {
             print(Point.number)
             let lastQuestion = randomArray[Point.number].word
@@ -147,6 +144,7 @@ class QuizViewController: UIViewController {
             {
                 moveOn()
             }
+            print("before")
             if Settings.quizType == "normal"{
                 randomArray = Info.flashCardArray.shuffled()
             }
@@ -158,6 +156,7 @@ class QuizViewController: UIViewController {
                     }
                 }
             }
+            print("after")
             while lastQuestion == randomArray[Point.number].word{
                 if Settings.quizType == "normal"{
                     randomArray = Info.flashCardArray.shuffled()
@@ -171,12 +170,16 @@ class QuizViewController: UIViewController {
                     }
                 }
             }
+            for i in 0..<randomArray.count {
+                print(randomArray[i].word)
+            }
             if Settings.wordd {
                 wordPart.text = "\(randomArray[Point.number].word)"
             } else {
                 wordPart.text = "\(randomArray[Point.number].def)"
             }
-        }
+        }//
+        print("after 2")
         correctRand = Int.random(in: 1...4)
         rand1 = -1
         rand2 = -1
@@ -269,9 +272,9 @@ class QuizViewController: UIViewController {
            Settings.resett = false
    }
     
-    func notEnoughCardsError(alertName: String, alertTitle: String)
+    func notEnoughCardsError(alertMessage: String, alertTitle: String)
     {
-        let alert = UIAlertController(title: alertTitle, message: alertName, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default){ (action) in
             self.tabBarController?.selectedIndex = 0
         }

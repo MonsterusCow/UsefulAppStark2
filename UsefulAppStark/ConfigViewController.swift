@@ -35,6 +35,14 @@ class ConfigViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if (Info.flashCardArray.count < 4){
+            notEnoughCardsError(alertMessage: "Create 4 flashcards first to take a quiz", alertTitle: "Create Some Flashcards")
+        } else {
+            Info.prevTabBar = 4
+        }
+    }
+    
     @IBAction func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -59,15 +67,25 @@ class ConfigViewController: UIViewController {
     }
     
     @IBAction func staredQuizSet(_ sender: Any) {
-        Settings.resett = true
-        if Settings.quizType == "normal"{
-            Settings.quizType = "stared"
-            staredQuizLabel.backgroundColor = UIColor(red: 117/255, green: 114/255, blue: 106/255, alpha: 1)
-            staredBackground.tintColor = UIColor(red: 117/255, green: 114/255, blue: 106/255, alpha: 1)
+        var checkArray = [Bool]()
+        for i in 0..<Info.flashCardArray.count{
+            if Info.flashCardArray[i].stared {
+                checkArray.append(Info.flashCardArray[i].stared)
+            }
+        }
+        if checkArray.count > 3 {
+            Settings.resett = true
+            if Settings.quizType == "normal"{
+                Settings.quizType = "stared"
+                staredQuizLabel.backgroundColor = UIColor(red: 117/255, green: 114/255, blue: 106/255, alpha: 1)
+                staredBackground.tintColor = UIColor(red: 117/255, green: 114/255, blue: 106/255, alpha: 1)
+            } else {
+                Settings.quizType = "normal"
+                staredQuizLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+                staredBackground.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+            }
         } else {
-            Settings.quizType = "normal"
-            staredQuizLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-            staredBackground.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+            notEnoughCardsError(alertMessage: "There are not enough starred cards to do a starred quiz", alertTitle: "Not enough starred")
         }
     }
     
@@ -112,18 +130,24 @@ class ConfigViewController: UIViewController {
     
     
     
-    func createAlert(alertName: String, alertTitle: String){
-        let alert = UIAlertController(title: alertTitle, message: alertName, preferredStyle: UIAlertController.Style.alert)
+    func createAlert(alertMessage: String, alertTitle: String){
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
         let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.default){ (action) in
         }
         let yesAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default){ (action) in
-            Settings.resett = true
-            self.selectQuizLabel.text = "Select quiz type\nCurrent: \(self.choice)"
-            Settings.quizType = self.choice.lowercased()
         }
         alert.addAction(yesAction)
         alert.addAction(noAction)
         self.present(alert, animated: true)
         
+    }
+    func notEnoughCardsError(alertMessage: String, alertTitle: String)
+    {
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default){ (action) in
+            self.tabBarController?.selectedIndex = Info.prevTabBar
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
     }
 }
