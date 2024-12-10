@@ -42,6 +42,7 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //            self.getStared()
 //            self.tableViewThing.reloadData()
 //        }
+        
     }
 
     func howManyStared() -> Int{

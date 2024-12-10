@@ -22,6 +22,9 @@ class Info {
     static var flashcardSets = [FlashcardSet]()
     static var curFlashcardSet: FlashcardSet!
     static var prevTabBar = 0
+    static var defaults = UserDefaults.standard
+    static var encoder = JSONEncoder()
+    static var decoder = JSONDecoder()
 }
 
 class Error {
@@ -32,9 +35,7 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
-    var defaults = UserDefaults.standard
-    var encoder = JSONEncoder()
-    var decoder = JSONDecoder()
+    
     
     
     override func viewDidLoad() {
@@ -46,11 +47,6 @@ class MenuViewController: UIViewController {
 //        Info.flashCardArray = [Flashcard(word: "Word 1", def: "Definition 1", stared: true), Flashcard(word: "Word 2", def: "Definition 2", stared: false), Flashcard(word: "Word 3", def: "Definition 3", stared: true), Flashcard(word: "Word 4", def: "Definition 4", stared: false), Flashcard(word: "Word 5", def: "Definition 5", stared: false), Flashcard(word: "Word 6", def: "Definition 6", stared: false)]
         
         self.navigationItem.setHidesBackButton(true, animated: true)
-        if let cardstuff = defaults.data(forKey: "cards"){
-            if let decoded = try? decoder.decode([Flashcard].self, from: cardstuff){
-                Info.flashCardArray = decoded
-            }
-        }
         
     }
     
@@ -60,9 +56,7 @@ class MenuViewController: UIViewController {
     
 
     @IBAction func saveCardsAction(_ sender: Any) {
-        if let something = try? encoder.encode(Info.flashCardArray){
-            defaults.set(something, forKey: "cards")
-        }
+        
         saved()
     }
     

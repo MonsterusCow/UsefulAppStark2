@@ -31,7 +31,9 @@ class CellStuff: UITableViewCell{
             starImage.image = UIImage(systemName: "star")
             Info.flashCardArray[index].stared = false
         }
-        
+        if let something = try? Info.encoder.encode(Info.flashCardArray){
+            Info.defaults.set(something, forKey: "cards")
+        }
     }
     
     
