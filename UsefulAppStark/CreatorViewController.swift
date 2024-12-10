@@ -61,6 +61,10 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
              nuhUH(alertText: "There is no definition yet")
          } else {
              Info.flashCardArray.append(Flashcard(word: wordTextView.text, def: defTextView.text, stared: false))
+             if let something = try? Info.encoder.encode(Info.flashcardSets)
+             {
+                 Info.defaults.set(something, forKey: "allSets")
+             }
           }
          instantGratification()
      }
