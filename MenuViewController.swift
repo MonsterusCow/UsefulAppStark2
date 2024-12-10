@@ -53,4 +53,20 @@ class MenuViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         Info.prevTabBar = 0
     }
+    
+
+    @IBAction func saveCardsAction(_ sender: Any) {
+        
+        saved()
+    }
+    
+    func saved(){
+       let alert = UIAlertController(title: "Cards saved", message: "Your flashcards have been saved", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: nil)
+        
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
+   }
+    @IBAction func setSelectAction(_ sender: Any) {
+    }
 }
