@@ -274,8 +274,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lEf-PT-J88">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lEf-PT-J88">
                                 <rect key="frame" x="0.0" y="132" width="393" height="616"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="BY0-0z-sX0" style="IBUITableViewCellStyleDefault" id="C2W-Xk-ygk">
@@ -313,12 +314,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2CR-wm-yPX"/>
                         <color key="backgroundColor" systemColor="systemCyanColor"/>
-                        <constraints>
-                            <constraint firstItem="lEf-PT-J88" firstAttribute="top" secondItem="2CR-wm-yPX" secondAttribute="top" id="IWd-Lj-FXP"/>
-                            <constraint firstItem="2CR-wm-yPX" firstAttribute="bottom" secondItem="lEf-PT-J88" secondAttribute="bottom" id="K0G-Z3-qoO"/>
-                            <constraint firstItem="lEf-PT-J88" firstAttribute="leading" secondItem="2CR-wm-yPX" secondAttribute="leading" id="Wg7-Cw-Ixh"/>
-                            <constraint firstItem="2CR-wm-yPX" firstAttribute="trailing" secondItem="lEf-PT-J88" secondAttribute="trailing" id="aPG-F2-7gV"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cke-dT-P51"/>
                     <connections>
@@ -1020,6 +1015,16 @@ Current: Normal</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOZ-FX-S1n">
+                                <rect key="frame" x="110" y="404" width="171" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Go to Set Selection"/>
+                                <connections>
+                                    <action selector="setSelectAction:" destination="K2L-hx-0ql" eventType="touchUpInside" id="KCU-US-U2G"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b5c-ZK-DgY"/>
                         <color key="backgroundColor" systemColor="systemCyanColor"/>

@@ -67,4 +67,6 @@ class MenuViewController: UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true)
    }
+    @IBAction func setSelectAction(_ sender: Any) {
+    }
 }
