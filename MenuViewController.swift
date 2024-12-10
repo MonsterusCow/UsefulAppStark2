@@ -34,6 +34,8 @@ class Error {
 import UIKit
 
 class MenuViewController: UIViewController {
+
+    
     
     
     override func viewDidLoad() {
@@ -54,9 +56,7 @@ class MenuViewController: UIViewController {
     
 
     @IBAction func saveCardsAction(_ sender: Any) {
-        if let something = try? encoder.encode(Info.flashCardArray){
-            defaults.set(something, forKey: "cards")
-        }
+        
         saved()
     }
     
