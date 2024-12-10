@@ -306,7 +306,7 @@
                                     <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="createSetAction:" destination="mvI-tH-cJI" eventType="touchUpInside" id="noM-Ga-bbQ"/>
+                                    <action selector="createSetAction:" destination="mvI-tH-cJI" eventType="touchUpInside" id="Xuf-aB-q17"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjt-tt-syf">

@@ -66,6 +66,23 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
                  Info.defaults.set(something, forKey: "allSets")
              }
           }
+         
+         var fullText = "Created Flashcards:\n\n"
+                 
+         for flashcard in Info.flashCardArray {
+             fullText += flashcard.word + "\n"
+         }
+
+         let attributedString = NSMutableAttributedString(string: fullText)
+         
+         let defaultFont = UIFont.systemFont(ofSize: 24)
+         attributedString.addAttribute(.font, value: defaultFont, range: NSRange(location: 0, length: fullText.count))
+
+         let boldRange = (fullText as NSString).range(of: "Created Flashcards:")
+
+         attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 24), range: boldRange)
+
+         createdCards.attributedText = attributedString
          instantGratification()
      }
     
