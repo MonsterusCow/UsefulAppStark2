@@ -156,6 +156,7 @@ class QuizViewController: UIViewController {
                     }
                 }
             }
+            randomArray = randomArray.shuffled()
             print("after")
             while lastQuestion == randomArray[Point.number].word{
                 if Settings.quizType == "normal"{
@@ -168,6 +169,7 @@ class QuizViewController: UIViewController {
                             randomArray.append(Info.flashCardArray[i])
                         }
                     }
+                    randomArray = randomArray.shuffled()
                 }
             }
             for i in 0..<randomArray.count {
