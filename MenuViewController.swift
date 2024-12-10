@@ -19,6 +19,8 @@ class Flashcard: Codable {
 
 class Info {
     static var flashCardArray = [Flashcard]()
+    static var flashcardSets = [FlashcardSet]()
+    static var curFlashcardSet: FlashcardSet!
     static var prevTabBar = 0
 }
 
