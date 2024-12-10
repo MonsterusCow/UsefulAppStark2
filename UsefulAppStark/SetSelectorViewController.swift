@@ -80,11 +80,17 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
                 }
                 
                 Info.flashcardSets.append(FlashcardSet(name: fields[0].text ?? "", flashcards: [Flashcard]()))
+                self.tableView.reloadData()
             }
         ))
+        
+        present(alert, animated: true)
     }
     
-
+    @IBAction func createSetAction(_ sender: Any) {
+        alertYayy()
+    }
+    
     /*
     // MARK: - Navigation
 

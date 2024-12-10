@@ -68,6 +68,6 @@ class MenuViewController: UIViewController {
         self.present(alert, animated: true)
    }
     @IBAction func setSelectAction(_ sender: Any) {
-        
+        performSegue(withIdentifier: "toSetSelect", sender: nil)
     }
 }
