@@ -21,12 +21,12 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
         wordTextView.delegate = self
         defTextView.delegate = self
         createdCards.layer.cornerRadius = 20
-        self.navigationItem.setHidesBackButton(true, animated: true)
-
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.hidesBackButton = true
         Info.prevTabBar = 1
         createdLabel.isHidden = true
         createdBackground.isHidden = true
@@ -70,7 +70,7 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
              instantGratification()
           }
          
-         var fullText = "Created Flashcards:\n\n"
+         var fullText = "Created Flashcards:\n"
                  
          for flashcard in Info.flashCardArray {
              fullText += flashcard.word + "\n"

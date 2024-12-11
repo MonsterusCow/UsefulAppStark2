@@ -18,10 +18,12 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         tableViewThing.delegate = self
         tableViewThing.dataSource = self
-        self.navigationItem.setHidesBackButton(true, animated: true)
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.hidesBackButton = true
         if (Info.flashCardArray.count == 0)
         {
             notEnoughCardsError(alertMessage: "Create a flashcard first to view your flashcards", alertTitle: "Create Some Flashcards")

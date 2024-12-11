@@ -16,7 +16,7 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.setHidesBackButton(true, animated: false)
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
@@ -102,15 +102,4 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func createSetAction(_ sender: Any) {
         alertYayy()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

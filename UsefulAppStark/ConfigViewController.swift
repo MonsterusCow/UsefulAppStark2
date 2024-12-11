@@ -36,6 +36,8 @@ class ConfigViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.hidesBackButton = true
         if (Info.flashCardArray.count < 4){
             notEnoughCardsError(alertMessage: "Create 4 flashcards first to take a quiz", alertTitle: "Create Some Flashcards")
         } else {

@@ -40,22 +40,15 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //enable for one run to clear saved sets
-//        defaults.set(nil, forKey: "allSets")
-        //enable for one run to clear saved cards
-//        defaults.set(nil, forKey: "cards")
         
-        //disable for auto flashcards to be removed:
-        
-        
-        
-        
-        self.navigationItem.setHidesBackButton(true, animated: true)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.hidesBackButton = true
         Info.prevTabBar = 0
+        
     }
     
 

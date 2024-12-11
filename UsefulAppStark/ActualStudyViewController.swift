@@ -18,11 +18,13 @@ class ActualStudyViewController: UIViewController {
     var number = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: true)
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.hidesBackButton = true
         if (Info.flashCardArray.count == 0){
             notEnoughCardsError(alertMessage: "Create a flashcard first to study your flashcards", alertTitle: "Create Some Flashcards")
         } else {
