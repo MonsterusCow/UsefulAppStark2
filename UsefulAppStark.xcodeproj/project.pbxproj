@@ -6,11 +6,6 @@
 	objectVersion = 70;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		2830DE412CD4F9EB00C06FB8 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830DE402CD4F9EB00C06FB8 /* QuizViewController.swift */; };
-		2850EB002CF0C26300139B43 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2850EAFF2CF0C26300139B43 /* MenuViewController.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		28000DE62CCFC5B000F938DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -32,8 +27,6 @@
 		28000DCC2CCFC5AE00F938DC /* UsefulAppStark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UsefulAppStark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28000DE52CCFC5B000F938DC /* UsefulAppStarkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsefulAppStarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28000DEF2CCFC5B000F938DC /* UsefulAppStarkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsefulAppStarkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2830DE402CD4F9EB00C06FB8 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
-		2850EAFF2CF0C26300139B43 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -80,8 +73,6 @@
 		28000DC32CCFC5AE00F938DC = {
 			isa = PBXGroup;
 			children = (
-				2850EAFF2CF0C26300139B43 /* MenuViewController.swift */,
-				2830DE402CD4F9EB00C06FB8 /* QuizViewController.swift */,
 				28000DCE2CCFC5AE00F938DC /* UsefulAppStark */,
 				28000DE82CCFC5B000F938DC /* UsefulAppStarkTests */,
 				28000DF22CCFC5B000F938DC /* UsefulAppStarkUITests */,
@@ -243,8 +234,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2830DE412CD4F9EB00C06FB8 /* QuizViewController.swift in Sources */,
-				2850EB002CF0C26300139B43 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
