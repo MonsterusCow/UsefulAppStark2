@@ -93,6 +93,10 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 Info.flashcardSets.append(FlashcardSet(name: fields[0].text ?? "", flashcards: [Flashcard]()))
                 self.tableView.reloadData()
+                if let something = try? Info.encoder.encode(Info.flashcardSets)
+                {
+                    Info.defaults.set(something, forKey: "allSets")
+                }
             }
         ))
         
