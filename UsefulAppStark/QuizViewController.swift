@@ -16,6 +16,7 @@ class Settings {
     static var quizLength = "normal"
     //normal, stared
     static var quizType = "normal"
+    static var isPopping = false
 }
 
 class Point {
@@ -49,6 +50,7 @@ class QuizViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     override func viewWillAppear(_ animated: Bool){
+        if !Settings.isPopping {
             if Settings.resett {
                 reset()
             }
@@ -73,7 +75,7 @@ class QuizViewController: UIViewController {
                     }
                 }
                 
-//            }
+            }
             correctLabel.text = "Correct:\n\(Point.correct.count)"
             wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
         }

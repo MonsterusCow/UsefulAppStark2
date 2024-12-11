@@ -36,6 +36,7 @@ class ConfigViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        Settings.isPopping = false
         self.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.hidesBackButton = true
         if (Info.flashCardArray.count < 4){

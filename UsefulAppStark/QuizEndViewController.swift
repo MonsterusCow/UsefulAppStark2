@@ -51,6 +51,7 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         Point.number = 0
         Settings.resett = true
         self.navigationController?.popViewController(animated: true)
+  
     }
     
     @IBAction func goToMenu(_ sender: Any) {
@@ -60,6 +61,7 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         Settings.resett = true
         self.navigationController?.popViewController(animated: true)
         self.navigationController?.popViewController(animated: true)
+        Settings.isPopping = true
     }
     
     
