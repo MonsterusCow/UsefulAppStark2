@@ -30,7 +30,7 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
         Info.prevTabBar = 1
         createdLabel.isHidden = true
         createdBackground.isHidden = true
-        var fullText = "Created Flashcards:\n\n"
+        var fullText = "Created Flashcards:\n"
                 
         for flashcard in Info.flashCardArray {
             fullText += flashcard.word + "\n"
@@ -65,6 +65,7 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
              {
                  Info.defaults.set(something, forKey: "allSets")
              }
+             instantGratification()
           }
          
          var fullText = "Created Flashcards:\n\n"
@@ -83,7 +84,6 @@ class CreatorViewController: UIViewController, UITextViewDelegate {
          attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 24), range: boldRange)
 
          createdCards.attributedText = attributedString
-         instantGratification()
      }
     
     func nuhUH(alertText: String){
