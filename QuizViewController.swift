@@ -155,6 +155,7 @@ class QuizViewController: UIViewController {
                         randomArray.append(Info.flashCardArray[i])
                     }
                 }
+                randomArray = randomArray.shuffled()
             }
             randomArray = randomArray.shuffled()
             print("after")
