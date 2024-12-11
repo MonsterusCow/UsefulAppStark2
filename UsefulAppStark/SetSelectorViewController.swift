@@ -52,6 +52,17 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
         performSegue(withIdentifier: "woahhhGoTabz", sender: nil)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            Info.flashcardSets.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            if let something = try? Info.encoder.encode(Info.flashcardSets)
+            {
+                Info.defaults.set(something, forKey: "allSets")
+            }
+        }
+    }
+    
     func alertYayy()
     {
         let alert = UIAlertController(
