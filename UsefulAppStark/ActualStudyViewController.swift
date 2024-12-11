@@ -200,6 +200,7 @@ class ActualStudyViewController: UIViewController {
             starImage.image = UIImage(systemName: "star.fill")
             Info.flashCardArray[number].stared = true
         }
+        Info.curFlashcardSet.flashcards = Info.flashCardArray
         if let something = try? Info.encoder.encode(Info.flashcardSets){
             Info.defaults.set(something, forKey: "allSets")
         }
