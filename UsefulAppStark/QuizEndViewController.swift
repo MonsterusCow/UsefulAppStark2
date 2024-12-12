@@ -15,10 +15,6 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var percentageText: UILabel!
     
-    @IBOutlet weak var correctText: UILabel!
-    
-    @IBOutlet weak var wrongText: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -41,8 +37,6 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         wrongTableView.reloadData()
         correctTableView.reloadData()
         
-        correctText.text = "Correct: \(Point.correct.count)"
-        wrongText.text = "Wrong: \(Point.wrong.count)"
     }
     
     @IBAction func quizAgain(_ sender: Any) {
@@ -64,14 +58,11 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.popViewController(animated: true)
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableView == correctTableView ? Point.correct.count : Point.wrong.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == correctTableView
-        {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
             var string = ""
             if Point.correct[indexPath.row].stared{
@@ -79,19 +70,24 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else {
                 string = "star"
             }
-            cell.configure(word: Point.correct[indexPath.row].word, def: Point.correct[indexPath.row].def, image: string, num: indexPath.row)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
-            var string = ""
-            if Point.wrong[indexPath.row].stared{
-                string = "star.fill"
-            } else {
-                string = "star"
+            var correct = 0
+            for i in 0..<Point.correct.count{
+                if Info.flashCardArray[indexPath.row] == Point.correct[i]{
+                    correct += 1
+                    Point.correct.remove(at: i)
+                    i -= 1
+                }
             }
-            cell.configure(word: Point.wrong[indexPath.row].word, def: Point.wrong[indexPath.row].def, image: string, num: indexPath.row)
+            var wrong = 0
+            for i in 0..<Point.wrong.count{
+                if Info.flashCardArray[indexPath].row == Point.wrong[i]{
+                    wrong += 1
+                    Point.wrong.remove(at: i)
+                    i -= 1
+                }
+            }
+            cell.configure(word: Info.flashCardArray[indexPath.row].word, def: Info.flashCardArray[indexPath.row].def, image: string, num: indexPath.row, correct: correct, wrong: wrong)
             return cell
-        }
     }
 
 }
