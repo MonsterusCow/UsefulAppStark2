@@ -884,7 +884,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
-                                    <action selector="goQuiz:" destination="AhW-aT-1nO" eventType="touchUpInside" id="G9F-vw-8gs"/>
+                                    <action selector="finishEndless:" destination="T1H-FW-8Q0" eventType="touchUpInside" id="zY8-CB-pE2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1324,7 +1324,7 @@ Current: Normal</string>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="GdK-DS-v78">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="92"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-60-2FS">
+                                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-60-2FS">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="92"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="z0p-6i-LrK" userLabel="Word Label">
@@ -1599,7 +1599,7 @@ Current: Normal</string>
                         <outlet property="staredQuizLabel" destination="BAm-dx-4zW" id="Z3i-3g-N0h"/>
                         <outlet property="wordQuizLabel" destination="xFb-51-z6U" id="hcf-Bc-sN3"/>
                         <outlet property="workBackground" destination="tLI-cP-Dff" id="osf-S4-c5E"/>
-                        <segue destination="T1H-FW-8Q0" kind="show" identifier="goQuiz" id="iY8-pz-7oP"/>
+                        <segue destination="T1H-FW-8Q0" kind="show" identifier="goQuiz" animates="NO" id="iY8-pz-7oP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ozx-zl-c92" sceneMemberID="firstResponder"/>

@@ -37,6 +37,7 @@ class ConfigViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         Settings.isPopping = false
+        Settings.wasStarsChanged = false
         self.navigationItem.hidesBackButton = true
         self.tabBarController?.navigationItem.hidesBackButton = true
         if (Info.flashCardArray.count < 4){
@@ -44,10 +45,23 @@ class ConfigViewController: UIViewController {
         } else {
             Info.prevTabBar = 4
         }
+        if Settings.quizType == "stared"{
+            if howManyStared() < 4{
+                Settings.quizType = "normal"
+                staredQuizLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+                staredBackground.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+            }
+        }
     }
     
-    @IBAction func back(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+    func howManyStared() -> Int{
+        var temp = [Int]()
+        for i in 0..<Info.flashCardArray.count {
+            if Info.flashCardArray[i].stared{
+                temp.append(i)
+            }
+        }
+        return temp.count
     }
     
     

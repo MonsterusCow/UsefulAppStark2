@@ -35,6 +35,8 @@ class CellStuff: UITableViewCell{
         if let something = try? Info.encoder.encode(Info.flashcardSets){
             Info.defaults.set(something, forKey: "allSets")
         }
+        Settings.wasStarsChanged = true
+        print(Settings.wasStarsChanged)
     }
     
     
