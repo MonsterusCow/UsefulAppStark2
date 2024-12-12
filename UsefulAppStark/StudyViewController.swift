@@ -6,6 +6,9 @@
 //
 
 import UIKit
+class StudyInfo {
+    static var selectedFlashcard: Flashcard!
+}
 
 class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -107,6 +110,11 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 notEnoughCardsError(alertMessage: "There are no more flashcards", alertTitle: "None left")
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        StudyInfo.selectedFlashcard = Info.flashCardArray[indexPath.row]
+        performSegue(withIdentifier: "editFlashcard", sender: nil)
     }
     
     func notEnoughCardsError(alertMessage: String, alertTitle: String)
