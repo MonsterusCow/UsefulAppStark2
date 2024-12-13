@@ -18,7 +18,14 @@ class CellStuff: UITableViewCell{
     @IBOutlet weak var wrongText: UILabel!
     var index = 0
     
-    func configure(word: String, def: String, image: String, num: Int, correct: Int, wrong: Int){
+    func configure(word: String, def: String, image: String, num: Int){
+        wordLabel.text = word
+        defLabel.text = "definition: \(def)"
+        starImage.image = UIImage(systemName: image)
+        index = num
+    }
+    
+    func configureEnd(word: String, def: String, image: String, num: Int, correct: Int, wrong: Int){
         wordLabel.text = word
         defLabel.text = "definition: \(def)"
         starImage.image = UIImage(systemName: image)
