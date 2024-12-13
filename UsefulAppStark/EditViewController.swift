@@ -21,11 +21,10 @@ class EditViewController: UIViewController {
         wordTextView.text = StudyInfo.selectedFlashcard.word
         // Do any additional setup after loading the view.
     }
-    
-    @IBAction func editFlashcardAction(_ sender: Any) {
+    @IBAction func editAction(_ sender: Any) {
         StudyInfo.selectedFlashcard.def = defTextView.text
         StudyInfo.selectedFlashcard.word = wordTextView.text
-//        performSegue(withIdentifier: "toStudyy", sender: nil)
+        performSegue(withIdentifier: "toStudyy", sender: nil)
     }
     
     /*

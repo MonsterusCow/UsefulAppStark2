@@ -1706,8 +1706,7 @@ Current: Normal</string>
                                     <color key="baseBackgroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="createButton:" destination="4n7-gC-LNx" eventType="touchUpInside" id="Qaz-eN-nSJ"/>
-                                    <action selector="editFlashcardAction:" destination="4n7-gC-LNx" eventType="touchUpInside" id="CKH-w9-TUp"/>
+                                    <action selector="editAction:" destination="4n7-gC-LNx" eventType="touchUpInside" id="hU1-Qh-ddb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Definition:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEB-Eh-5qN">
