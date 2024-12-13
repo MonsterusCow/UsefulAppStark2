@@ -91,12 +91,12 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
             } else {
                 string = "star"
             }
-            cell.configure(word: Info.flashCardArray[indexPath.row].word, def: Info.flashCardArray[indexPath.row].def, image: string, num: indexPath.row,correct: 0,wrong: 0)
+            cell.configure(word: Info.flashCardArray[indexPath.row].word, def: Info.flashCardArray[indexPath.row].def, image: string, num: indexPath.row)
             return cell
         } else {
             getStared()
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
-            cell.configure(word: Info.flashCardArray[indexs[indexPath.row]].word, def: Info.flashCardArray[indexs[indexPath.row]].def, image: "star.fill", num: indexPath.row,correct: 0,wrong: 0)
+            cell.configure(word: Info.flashCardArray[indexs[indexPath.row]].word, def: Info.flashCardArray[indexs[indexPath.row]].def, image: "star.fill", num: indexPath.row)
             return cell
         }
     }

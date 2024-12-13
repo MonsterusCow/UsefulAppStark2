@@ -89,7 +89,7 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         } while(repeet)
-            cell.configure(word: Info.flashCardArray[indexPath.row].word, def: Info.flashCardArray[indexPath.row].def, image: string, num: indexPath.row, correct: correct, wrong: wrong)
+        cell.configureEnd(word: Info.flashCardArray[indexPath.row].word, def: Info.flashCardArray[indexPath.row].def, image: string, num: indexPath.row, correct: correct, wrong: wrong)
             return cell
     }
 
