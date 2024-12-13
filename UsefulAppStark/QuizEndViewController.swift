@@ -37,6 +37,7 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func quizAgain(_ sender: Any) {
         Point.correct = []
         Point.wrong = []
+        Point.endlessResults = []
         Point.number = 0
         Settings.resett = true
         self.navigationController?.popViewController(animated: false)
@@ -46,6 +47,7 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func goToMenu(_ sender: Any) {
         Point.correct = []
         Point.wrong = []
+        Point.endlessResults = []
         Point.number = 0
         Settings.resett = true
         Settings.isPopping = true
@@ -54,13 +56,14 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableView == correctTableView ? Point.correct.count : Point.wrong.count
+//        return tableView == correctTableView ? Point.correct.count : Point.wrong.count
+        return Info.flashCardArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
             var string = ""
-            if Point.correct[indexPath.row].stared{
+            if Info.flashCardArray[indexPath.row].stared{
                 string = "star.fill"
             } else {
                 string = "star"
@@ -68,6 +71,7 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
             var correct = 0
         var repeet = false
         repeat{
+            repeet = false
             for i in 0..<Point.correct.count{
                 if Info.flashCardArray[indexPath.row].word == Point.correct[i].word{
                     correct += 1
@@ -80,6 +84,7 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
             var wrong = 0
         repeet = false
         repeat {
+            repeet = false
             for i in 0..<Point.wrong.count{
                 if Info.flashCardArray[indexPath.row].word == Point.wrong[i].word{
                     wrong += 1

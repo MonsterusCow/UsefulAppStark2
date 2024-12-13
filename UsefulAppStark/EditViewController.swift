@@ -24,7 +24,7 @@ class EditViewController: UIViewController {
     @IBAction func editAction(_ sender: Any) {
         StudyInfo.selectedFlashcard.def = defTextView.text
         StudyInfo.selectedFlashcard.word = wordTextView.text
-        performSegue(withIdentifier: "toStudyy", sender: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     /*

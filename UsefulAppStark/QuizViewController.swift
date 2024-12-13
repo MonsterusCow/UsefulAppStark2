@@ -24,6 +24,7 @@ class Point {
     static var correct = [Flashcard]()
     static var wrong = [Flashcard]()
     static var number = 0
+    static var endlessResults = [Flashcard]()
 }
 
 class QuizViewController: UIViewController {
@@ -35,6 +36,8 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var option4: UILabel!
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var wrongLabel: UILabel!
+    @IBOutlet weak var finishLabel: UILabel!
+    @IBOutlet weak var finishButton: UIButton!
     var correctRand = 1
     var rand1 = -1
     var rand2 = -1
@@ -82,8 +85,16 @@ class QuizViewController: UIViewController {
                 }
                 
             }
+        
             correctLabel.text = "Correct:\n\(Point.correct.count)"
             wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
+        if Settings.quizType == "endless"{
+            finishLabel.isHidden = false
+            finishButton.isEnabled = true
+        } else {
+            finishLabel.isHidden = true
+            finishButton.isEnabled = false
+        }
         }
     
     

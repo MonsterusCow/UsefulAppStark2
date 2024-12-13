@@ -861,15 +861,6 @@
                                     <action selector="resetButton:" destination="T1H-FW-8Q0" eventType="touchUpInside" id="88f-e6-2Oq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9u-6K-MyI">
-                                <rect key="frame" x="146" y="177" width="103" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled">
-                                    <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Finish Endless" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="lSe-De-lJJ">
                                 <rect key="frame" x="150" y="181" width="93" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -903,6 +894,8 @@
                     <navigationItem key="navigationItem" id="UUM-tN-ExM"/>
                     <connections>
                         <outlet property="correctLabel" destination="qcL-Rd-Eak" id="Ovu-No-A5E"/>
+                        <outlet property="finishButton" destination="hUS-AV-Sop" id="TBS-0o-tSd"/>
+                        <outlet property="finishLabel" destination="lSe-De-lJJ" id="oBf-vB-taS"/>
                         <outlet property="option1" destination="UXR-7A-B7N" id="7ft-xD-vIm"/>
                         <outlet property="option2" destination="0Ya-ai-Z5Y" id="yOU-dp-Xsf"/>
                         <outlet property="option3" destination="RH9-OO-e9C" id="1wO-Fy-sLX"/>
