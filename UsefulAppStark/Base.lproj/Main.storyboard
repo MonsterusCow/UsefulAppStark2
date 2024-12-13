@@ -1674,7 +1674,6 @@ Current: Normal</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="09x-2l-0b6"/>
         <segue reference="IKi-Yn-P1C"/>
     </inferredMetricsTieBreakers>
     <resources>

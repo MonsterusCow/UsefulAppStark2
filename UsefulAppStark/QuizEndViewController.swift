@@ -10,9 +10,7 @@ import UIKit
 class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var correctTableView: UITableView!
-    
-    @IBOutlet weak var wrongTableView: UITableView!
-    
+        
     @IBOutlet weak var percentageText: UILabel!
     
     override func viewDidLoad() {
@@ -21,8 +19,6 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         correctTableView.delegate = self
         correctTableView.dataSource = self
-        wrongTableView.delegate = self
-        wrongTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +30,6 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         percentageText.text = "You got \(percentage)% questions correct"
         
-        wrongTableView.reloadData()
         correctTableView.reloadData()
         
     }
@@ -71,21 +66,29 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
                 string = "star"
             }
             var correct = 0
+        var repeet = false
+        repeat{
             for i in 0..<Point.correct.count{
-                if Info.flashCardArray[indexPath.row] == Point.correct[i]{
+                if Info.flashCardArray[indexPath.row].word == Point.correct[i].word{
                     correct += 1
                     Point.correct.remove(at: i)
-                    i -= 1
+                    repeet = true
+                    break
                 }
             }
+        }while(repeet)
             var wrong = 0
+        repeet = false
+        repeat {
             for i in 0..<Point.wrong.count{
-                if Info.flashCardArray[indexPath].row == Point.wrong[i]{
+                if Info.flashCardArray[indexPath.row].word == Point.wrong[i].word{
                     wrong += 1
                     Point.wrong.remove(at: i)
-                    i -= 1
+                    repeet = true
+                    break
                 }
             }
+        } while(repeet)
             cell.configure(word: Info.flashCardArray[indexPath.row].word, def: Info.flashCardArray[indexPath.row].def, image: string, num: indexPath.row, correct: correct, wrong: wrong)
             return cell
     }
