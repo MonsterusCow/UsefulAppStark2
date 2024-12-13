@@ -844,8 +844,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title=""/>
                                 <connections>
-                                    <action selector="backButton:" destination="uqV-ah-JgW" eventType="touchUpInside" id="eUD-k3-fJ7"/>
-                                    <action selector="backButton:" destination="T1H-FW-8Q0" eventType="touchUpInside" id="zGj-X2-pIm"/>
+                                    <action selector="backButton:" destination="T1H-FW-8Q0" eventType="touchUpInside" id="Fm8-9K-aE0"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow.counterclockwise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nGl-3f-pmC">
@@ -859,8 +858,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title=""/>
                                 <connections>
-                                    <action selector="backButton:" destination="T1H-FW-8Q0" eventType="touchUpInside" id="6pe-s5-De1"/>
-                                    <action selector="backButton:" destination="uqV-ah-JgW" eventType="touchUpInside" id="VpB-1e-5VZ"/>
                                     <action selector="resetButton:" destination="T1H-FW-8Q0" eventType="touchUpInside" id="88f-e6-2Oq"/>
                                 </connections>
                             </button>
