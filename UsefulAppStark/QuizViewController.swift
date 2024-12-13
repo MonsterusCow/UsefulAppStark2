@@ -17,6 +17,7 @@ class Settings {
     //normal, stared
     static var quizType = "normal"
     static var isPopping = false
+    static var wasStarsChanged = false
 }
 
 class Point {
@@ -51,10 +52,15 @@ class QuizViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool){
         if !Settings.isPopping {
-            if Settings.resett {
-                reset()
+        if Settings.wasStarsChanged {
+            if howManyStared() < 4 {
+                self.navigationController?.popViewController(animated: true)
             }
-//            if Settings.quizLength == "normal"{
+        }
+                if Settings.resett {
+                    reset()
+                }
+                //            if Settings.quizLength == "normal"{
                 if Settings.wordd {
                     wordPart.text = "\(randomArray[Point.number].word)"
                 } else {
@@ -85,7 +91,15 @@ class QuizViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
+    func howManyStared() -> Int{
+        var temp = [Int]()
+        for i in 0..<Info.flashCardArray.count {
+            if Info.flashCardArray[i].stared{
+                temp.append(i)
+            }
+        }
+        return temp.count
+    }
     
     @IBAction func button1(_ sender: Any) {
         buttonThing(correctNumberThingWhyRyan: 1)
@@ -260,6 +274,10 @@ class QuizViewController: UIViewController {
         alert.addAction(yesAction)
         alert.addAction(noAction)
         self.present(alert, animated: true)
+    }
+    
+    @IBAction func finishEndless(_ sender: Any) {
+        performSegue(withIdentifier: "endQuiz", sender: nil)
     }
     
     func reset(){

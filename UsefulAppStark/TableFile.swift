@@ -14,13 +14,17 @@ class CellStuff: UITableViewCell{
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var defLabel: UILabel!
     @IBOutlet weak var starImage: UIImageView!
+    @IBOutlet weak var correctText: UILabel!
+    @IBOutlet weak var wrongText: UILabel!
     var index = 0
     
-    func configure(word: String, def: String, image: String, num: Int){
+    func configure(word: String, def: String, image: String, num: Int, correct: Int, wrong: Int){
         wordLabel.text = word
         defLabel.text = "definition: \(def)"
         starImage.image = UIImage(systemName: image)
         index = num
+        correctText.text = "Correct: \(correct)"
+        wrongText.text = "Wrong: \(wrong)"
     }
     
     @IBAction func star(_ sender: Any) {
@@ -35,6 +39,8 @@ class CellStuff: UITableViewCell{
         if let something = try? Info.encoder.encode(Info.flashcardSets){
             Info.defaults.set(something, forKey: "allSets")
         }
+        Settings.wasStarsChanged = true
+        print(Settings.wasStarsChanged)
     }
     
     

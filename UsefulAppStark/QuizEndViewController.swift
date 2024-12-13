@@ -10,14 +10,8 @@ import UIKit
 class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var correctTableView: UITableView!
-    
-    @IBOutlet weak var wrongTableView: UITableView!
-    
+        
     @IBOutlet weak var percentageText: UILabel!
-    
-    @IBOutlet weak var correctText: UILabel!
-    
-    @IBOutlet weak var wrongText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +19,6 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         correctTableView.delegate = self
         correctTableView.dataSource = self
-        wrongTableView.delegate = self
-        wrongTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,11 +30,8 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         percentageText.text = "You got \(percentage)% questions correct"
         
-        wrongTableView.reloadData()
         correctTableView.reloadData()
         
-        correctText.text = "Correct: \(Point.correct.count)"
-        wrongText.text = "Wrong: \(Point.wrong.count)"
     }
     
     @IBAction func quizAgain(_ sender: Any) {
@@ -50,7 +39,7 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         Point.wrong = []
         Point.number = 0
         Settings.resett = true
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
   
     }
     
@@ -59,19 +48,16 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         Point.wrong = []
         Point.number = 0
         Settings.resett = true
-        self.navigationController?.popViewController(animated: true)
-        self.navigationController?.popViewController(animated: true)
         Settings.isPopping = true
+        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableView == correctTableView ? Point.correct.count : Point.wrong.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == correctTableView
-        {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
             var string = ""
             if Point.correct[indexPath.row].stared{
@@ -79,19 +65,32 @@ class QuizEndViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else {
                 string = "star"
             }
-            cell.configure(word: Point.correct[indexPath.row].word, def: Point.correct[indexPath.row].def, image: string, num: indexPath.row)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cellBeHere") as! CellStuff
-            var string = ""
-            if Point.wrong[indexPath.row].stared{
-                string = "star.fill"
-            } else {
-                string = "star"
+            var correct = 0
+        var repeet = false
+        repeat{
+            for i in 0..<Point.correct.count{
+                if Info.flashCardArray[indexPath.row].word == Point.correct[i].word{
+                    correct += 1
+                    Point.correct.remove(at: i)
+                    repeet = true
+                    break
+                }
             }
-            cell.configure(word: Point.wrong[indexPath.row].word, def: Point.wrong[indexPath.row].def, image: string, num: indexPath.row)
+        }while(repeet)
+            var wrong = 0
+        repeet = false
+        repeat {
+            for i in 0..<Point.wrong.count{
+                if Info.flashCardArray[indexPath.row].word == Point.wrong[i].word{
+                    wrong += 1
+                    Point.wrong.remove(at: i)
+                    repeet = true
+                    break
+                }
+            }
+        } while(repeet)
+            cell.configure(word: Info.flashCardArray[indexPath.row].word, def: Info.flashCardArray[indexPath.row].def, image: string, num: indexPath.row, correct: correct, wrong: wrong)
             return cell
-        }
     }
 
 }
