@@ -35,19 +35,27 @@ class CellStuff: UITableViewCell{
     }
     
     @IBAction func star(_ sender: Any) {
-        if starImage.image == UIImage(systemName: "star"){
-            starImage.image = UIImage(systemName: "star.fill")
-            Info.flashCardArray[index].stared = true
-        } else {
-            starImage.image = UIImage(systemName: "star")
-            Info.flashCardArray[index].stared = false
-        }
-        Info.curFlashcardSet.flashcards = Info.flashCardArray
-        if let something = try? Info.encoder.encode(Info.flashcardSets){
-            Info.defaults.set(something, forKey: "allSets")
-        }
-        Settings.wasStarsChanged = true
-        print(Settings.wasStarsChanged)
+//        if index > -1 {
+            if starImage.image == UIImage(systemName: "star"){
+                starImage.image = UIImage(systemName: "star.fill")
+                Info.flashCardArray[index].stared = true
+            } else {
+                starImage.image = UIImage(systemName: "star")
+                Info.flashCardArray[index].stared = false
+            }
+            Info.curFlashcardSet.flashcards = Info.flashCardArray
+            if let something = try? Info.encoder.encode(Info.flashcardSets){
+                Info.defaults.set(something, forKey: "allSets")
+            }
+            Settings.wasStarsChanged = true
+//        } else {
+//            if starImage.image == UIImage(systemName: "star"){
+//                starImage.image = UIImage(systemName: "star.fill")
+//            } else {
+//                starImage.image = UIImage(systemName: "star")
+//            }
+//            Settings.wasStarsChanged = true
+//        }
     }
     
     
