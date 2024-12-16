@@ -24,6 +24,13 @@ class EditViewController: UIViewController {
     @IBAction func editAction(_ sender: Any) {
         StudyInfo.selectedFlashcard.def = defTextView.text
         StudyInfo.selectedFlashcard.word = wordTextView.text
+        
+        Info.curFlashcardSet.flashcards = Info.flashCardArray
+        if let something = try? Info.encoder.encode(Info.flashcardSets)
+        {
+            Info.defaults.set(something, forKey: "allSets")
+        }
+        
         self.navigationController?.popViewController(animated: true)
     }
     
