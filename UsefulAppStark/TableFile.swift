@@ -20,14 +20,14 @@ class CellStuff: UITableViewCell{
     
     func configure(word: String, def: String, image: String, num: Int){
         wordLabel.text = word
-        defLabel.text = "definition: \(def)"
+        defLabel.text = "Def: \(def)"
         starImage.image = UIImage(systemName: image)
         index = num
     }
     
     func configureEnd(word: String, def: String, image: String, num: Int, correct: Int, wrong: Int){
         wordLabel.text = word
-        defLabel.text = "definition: \(def)"
+        defLabel.text = "Def: \(def)"
         starImage.image = UIImage(systemName: image)
         index = num
         correctText.text = "Correct: \(correct)"
