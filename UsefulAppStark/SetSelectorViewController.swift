@@ -38,9 +38,9 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "setIdentifier")!
+        var cell = tableView.dequeueReusableCell(withIdentifier: "setIdentifier") as! SetCell
         
-        cell.textLabel!.text = Info.flashcardSets[indexPath.row].name
+        cell.configure(name: Info.flashcardSets[indexPath.row].name, count: "\(Info.flashcardSets[indexPath.row].flashcards.count) flashcards")
         
         return cell
     }
