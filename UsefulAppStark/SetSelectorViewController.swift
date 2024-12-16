@@ -52,8 +52,19 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
         performSegue(withIdentifier: "woahhhGoTabz", sender: nil)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            Info.flashcardSets.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            if let something = try? Info.encoder.encode(Info.flashcardSets)
+//            {
+//                Info.defaults.set(something, forKey: "allSets")
+//            }
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
             Info.flashcardSets.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             if let something = try? Info.encoder.encode(Info.flashcardSets)
@@ -61,6 +72,49 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
                 Info.defaults.set(something, forKey: "allSets")
             }
         }
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { action, indexPath in
+            let alert = UIAlertController(
+                title: "Enter set name",
+                message: "Enter new name for flashcard set",
+                preferredStyle: .alert
+            )
+            
+            alert.addTextField(configurationHandler: { field in
+                field.placeholder = "New set name"
+                field.returnKeyType = .continue
+                field.keyboardType = .default
+            })
+            
+            alert.addAction(UIAlertAction(
+                title: "Cancel",
+                style: .cancel,
+                handler: nil
+            ))
+                            
+            alert.addAction(UIAlertAction(
+                title: "Ok",
+                style: .default,
+                handler: { _ in
+                    guard let fields = alert.textFields, fields.count == 1 else {
+                        return
+                    }
+                    
+                    Info.flashcardSets[indexPath.row].name = fields[0].text!
+                    tableView.reloadData()
+                    if let something = try? Info.encoder.encode(Info.flashcardSets)
+                    {
+                        Info.defaults.set(something, forKey: "allSets")
+                    }
+                }
+            ))
+            
+            self.present(alert, animated: true)
+        }
+        
+        editAction.backgroundColor = .systemOrange
+        
+        return [deleteAction, editAction]
     }
     
     func alertYayy()
