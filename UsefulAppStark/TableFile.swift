@@ -35,7 +35,6 @@ class CellStuff: UITableViewCell{
     }
     
     @IBAction func star(_ sender: Any) {
-//        if index > -1 {
             if starImage.image == UIImage(systemName: "star"){
                 starImage.image = UIImage(systemName: "star.fill")
                 Info.flashCardArray[index].stared = true
@@ -48,14 +47,6 @@ class CellStuff: UITableViewCell{
                 Info.defaults.set(something, forKey: "allSets")
             }
             Settings.wasStarsChanged = true
-//        } else {
-//            if starImage.image == UIImage(systemName: "star"){
-//                starImage.image = UIImage(systemName: "star.fill")
-//            } else {
-//                starImage.image = UIImage(systemName: "star")
-//            }
-//            Settings.wasStarsChanged = true
-//        }
     }
     
     

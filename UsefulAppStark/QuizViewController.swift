@@ -88,7 +88,7 @@ class QuizViewController: UIViewController {
         
             correctLabel.text = "Correct:\n\(Point.correct.count)"
             wrongLabel.text = "Wrong:\n\(Point.wrong.count)"
-        if Settings.quizType == "endless"{
+        if Settings.quizLength == "endless"{
             finishLabel.isHidden = false
             finishButton.isEnabled = true
         } else {

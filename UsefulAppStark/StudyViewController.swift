@@ -42,12 +42,8 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableViewThing.reloadData()
     }
     
-    @IBAction func starButton(_ sender: Any) {
-//        _ = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: false) { timer in
-//            self.getStared()
-//            self.tableViewThing.reloadData()
-//        }
-        
+    public func reload(){
+        tableViewThing.reloadData()
     }
 
     func howManyStared() -> Int{

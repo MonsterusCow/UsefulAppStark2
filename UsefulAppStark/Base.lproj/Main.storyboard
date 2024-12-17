@@ -292,11 +292,11 @@
                                 <color key="sectionIndexBackgroundColor" systemColor="systemBlueColor"/>
                                 <color key="sectionIndexTrackingBackgroundColor" systemColor="systemCyanColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="setIdentifier" rowHeight="81" id="C2W-Xk-ygk" customClass="SetCell" customModule="UsefulAppStark" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="81"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="setIdentifier" rowHeight="87" id="C2W-Xk-ygk" customClass="SetCell" customModule="UsefulAppStark" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C2W-Xk-ygk" id="9cV-bP-jrJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="81"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BAa-1S-Qxi">
@@ -304,16 +304,16 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="N4g-Xh-ccw">
-                                                    <rect key="frame" x="10" y="0.0" width="368" height="81"/>
+                                                    <rect key="frame" x="10" y="0.0" width="368" height="87"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBC-WJ-7eu">
-                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="81"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="87"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZW-jQ-0uW">
-                                                            <rect key="frame" x="184" y="0.0" width="184" height="81"/>
+                                                            <rect key="frame" x="184" y="0.0" width="184" height="87"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -439,7 +439,6 @@
                                                     <buttonConfiguration key="configuration" style="plain"/>
                                                     <connections>
                                                         <action selector="star:" destination="DTA-1t-hhf" eventType="touchUpInside" id="izm-Eu-f6b"/>
-                                                        <action selector="starButton:" destination="96m-ln-Uvj" eventType="touchUpInside" id="f1O-hm-rfc"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1691,6 +1690,7 @@ Current: Normal</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="09x-2l-0b6"/>
         <segue reference="IKi-Yn-P1C"/>
     </inferredMetricsTieBreakers>
     <resources>
