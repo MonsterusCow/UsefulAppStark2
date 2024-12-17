@@ -44,6 +44,8 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
             }
             
             Info.flashcardSets = Info.flashcardSets ?? [FlashcardSet]()
+        } else {
+            defaults.set(0, forKey: "curSaveIndex")
         }
     }
     

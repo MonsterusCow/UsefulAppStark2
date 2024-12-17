@@ -35,12 +35,13 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    @IBOutlet weak var flashcardTitle: UILabel!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        flashcardTitle.text = Info.curFlashcardSet.name
         
     }
     
