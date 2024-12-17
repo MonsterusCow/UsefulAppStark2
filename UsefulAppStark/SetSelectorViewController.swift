@@ -31,9 +31,9 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                     Info.flashcardSets = decoded
                     tableView.reloadData()
-                    if let stupidIntMethod = defaults.data(forKey: "curSaveIndex")
+                    if defaults.integer(forKey: "curSaveIndex") != 0
                     {
-                        curSaveIndex = defaults.integer(forKey: "curSaveIndex")
+                        curSaveIndex = defaults.integer(forKey: "curSaveIndex") - 1
                         
                         Info.curFlashcardSet = Info.flashcardSets[curSaveIndex]
                         Info.flashCardArray = Info.curFlashcardSet.flashcards
@@ -64,7 +64,7 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
         Info.curFlashcardSet = Info.flashcardSets[indexPath.row]
         Info.flashCardArray = Info.curFlashcardSet.flashcards
         
-        defaults.set(indexPath.row, forKey: "curSaveIndex")
+        defaults.set(indexPath.row + 1, forKey: "curSaveIndex")
         
         performSegue(withIdentifier: "woahhhGoTabz", sender: nil)
     }
