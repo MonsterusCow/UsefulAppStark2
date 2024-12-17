@@ -12,6 +12,8 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
     var defaults = UserDefaults.standard
     
     var decoder = JSONDecoder()
+    
+    var curSaveIndex = -1
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -26,10 +28,16 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
                 {
                     return
                 }
+                if let stupidIntMethod = defaults.data(forKey: "curSaveIndex")
+                {
+                    curSaveIndex = defaults.integer(forKey: "curSaveIndex")
+                }
                 Info.flashcardSets = decoded
                 tableView.reloadData()
             }
         }
+        
+        Info.flashcardSets = Info.flashcardSets ?? [FlashcardSet]()
     }
     
     
@@ -48,6 +56,8 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Info.curFlashcardSet = Info.flashcardSets[indexPath.row]
         Info.flashCardArray = Info.curFlashcardSet.flashcards
+        
+        defaults.setValue(indexPath.row, forKey: "curSaveIndex")
         
         performSegue(withIdentifier: "woahhhGoTabz", sender: nil)
     }
