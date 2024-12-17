@@ -22,22 +22,29 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
-        if let curSaves = defaults.data(forKey: "allSets") {
-            if let decoded = try? decoder.decode([FlashcardSet].self, from: curSaves) {
-                if (decoded.count == 0)
-                {
-                    return
+        if Info.flashcardSets == nil {
+            if let curSaves = defaults.data(forKey: "allSets") {
+                if let decoded = try? decoder.decode([FlashcardSet].self, from: curSaves) {
+                    if (decoded.count == 0)
+                    {
+                        return
+                    }
+                    Info.flashcardSets = decoded
+                    tableView.reloadData()
+                    if let stupidIntMethod = defaults.data(forKey: "curSaveIndex")
+                    {
+                        curSaveIndex = defaults.integer(forKey: "curSaveIndex")
+                        
+                        Info.curFlashcardSet = Info.flashcardSets[curSaveIndex]
+                        Info.flashCardArray = Info.curFlashcardSet.flashcards
+                        
+                        performSegue(withIdentifier: "woahhhGoTabz", sender: nil)
+                    }
                 }
-                if let stupidIntMethod = defaults.data(forKey: "curSaveIndex")
-                {
-                    curSaveIndex = defaults.integer(forKey: "curSaveIndex")
-                }
-                Info.flashcardSets = decoded
-                tableView.reloadData()
             }
+            
+            Info.flashcardSets = Info.flashcardSets ?? [FlashcardSet]()
         }
-        
-        Info.flashcardSets = Info.flashcardSets ?? [FlashcardSet]()
     }
     
     
@@ -57,7 +64,7 @@ class SetSelectorViewController: UIViewController, UITableViewDelegate, UITableV
         Info.curFlashcardSet = Info.flashcardSets[indexPath.row]
         Info.flashCardArray = Info.curFlashcardSet.flashcards
         
-        defaults.setValue(indexPath.row, forKey: "curSaveIndex")
+        defaults.set(indexPath.row, forKey: "curSaveIndex")
         
         performSegue(withIdentifier: "woahhhGoTabz", sender: nil)
     }
